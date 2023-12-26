@@ -1,5 +1,27 @@
-.Hero {
+.HeroContainer {
     width: 100%;
-    height: auto;
-    border-radius: 16px;
+    position: relative;
+
+    .Hero {
+        width: 100%;
+        max-height: 80vh;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 16px;
+        position: relative;
+        z-index: 2;
+    }
+
+    &:after {
+        display: block;
+        width: 665px;
+        height: 577px;
+        content: " ";
+        background-image: url(../../app/assets/Shape1.svg);
+        background-size: contain;
+        position: absolute;
+        bottom: -300px;
+        right: -200px;
+        z-index: 1;
+    }
 }

@@ -9,10 +9,8 @@ export default async function Menu() {
     const client = createClient();
     const nav = await client.getSingle("global_nav");
 
-    console.log(nav);
-
     return (
-        <nav>
+        <nav className={styles.Menu}>
             <SliceZone slices={nav.data.slices} components={components} />
         </nav>
     )

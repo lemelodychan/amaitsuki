@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import styles from './page.module.css'
+import styles from './page.module.scss'
 
 import { createClient } from "@/prismicio";
 import { SliceZone } from "@prismicio/react";
@@ -21,13 +21,8 @@ export default async function Page() {
 
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Homepage
-        </p>
-        <div>
-          <SliceZone slices={page.data.slices} components={components} />
-        </div>
+      <div className={styles.content}>
+        <SliceZone slices={page.data.slices} components={components} />
       </div>
     </main>
   )

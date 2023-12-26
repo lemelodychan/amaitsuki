@@ -1,12 +1,89 @@
-.Member_Grid {
+.Member_Container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    position: relative;
+    z-index: 2;
 
-    .Member_Card {
+    .Member_Tags {
+        display: flex;
+        gap: 16px;
+        position: relative;
+        z-index: 2;
 
-        .Member_Image {
-            width: 280px;
-            height: auto;
+        .tag {
+            font-family: var(--font-title);
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2.1px;
+            text-transform: uppercase;
+            display: flex;
+            padding: 8px 12px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
             border-radius: 8px;
-        }
 
+            color: var(--at-purple);
+            border: 1px solid var(--at-purple);
+            transition: var(--transi);
+
+            &:hover {
+                color: var(--at-peach);
+                border: 1px solid var(--at-peach);
+                cursor: pointer;
+            }
+
+            &:first-child {
+                background: linear-gradient(143deg, #BD96FD -3.55%, #F4C7C2 103.55%);
+                color: var(--white);
+                font-weight: 600;
+                border: none;
+            }
+        }
+    }
+
+    .Member_Grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 64px 48px;
+        position: relative;
+        z-index: 2;
+
+        .Member_Card {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            .Member_Image {
+                width: 100%;
+                height: auto;
+                border-radius: 8px;
+            }
+
+            .info {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                font-family: var(--font-title);
+                font-style: normal;
+                text-transform: uppercase;
+                font-weight: 600;
+
+                .name {
+                    font-size: 16px;
+                    line-height: 32px;
+                    letter-spacing: 2.4px;
+                }
+                .status {
+                    color: var(--midgrey);
+                    font-size: 12px;
+                    line-height: 16px;
+                    letter-spacing: 1.8px;
+                }
+            }
+
+        }
     }
 }

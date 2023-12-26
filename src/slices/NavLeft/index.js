@@ -16,11 +16,9 @@ const NavLeft = ({ slice }) => {
       data-slice-variation={slice.variation}
     >
       {slice.items.map((item) => (
-            <li key={item.id}>
-              <PrismicNextLink field={item.link}>
-                  <>{item.name}</>
-              </PrismicNextLink>
-            </li>
+        <PrismicNextLink field={item.link} key={item.id}>
+          <>{item.name}</>
+        </PrismicNextLink>
       ))}
     </section>
   );

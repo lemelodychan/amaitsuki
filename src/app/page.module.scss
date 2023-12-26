@@ -1,0 +1,14 @@
+@use "./styles/mixins.scss" as *;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+  min-height: 100vh;
+
+  .content {
+    width: 100%;
+  }
+}

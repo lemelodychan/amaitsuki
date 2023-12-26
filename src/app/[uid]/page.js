@@ -23,9 +23,7 @@ export async function generateMetadata({ params }) {
       <div className={styles.main}>
         <div className={styles.container}>
             <PrismicRichText field={page.data.title} />
-            <div>
-                <SliceZone slices={page.data.slices} components={components} />
-            </div>
+            <SliceZone slices={page.data.slices} components={components} />
         </div>
       </div>
     );
