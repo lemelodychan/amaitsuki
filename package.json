@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "rm -rf .next/cache/fetch-cache && next dev",
+    "build": "rm -rf .next/cache/fetch-cache && next build",
     "start": "next start",
     "lint": "next lint",
     "slicemachine": "start-slicemachine"
@@ -16,7 +16,8 @@
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^4.12.0"
+    "react-icons": "^4.12.0",
+    "sass": "^1.69.5"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.31",

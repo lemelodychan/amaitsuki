@@ -2,11 +2,8 @@ import * as prismic from "@prismicio/client";
 import * as prismicNext from "@prismicio/next";
 import config from "../slicemachine.config.json";
 
-/**
- * The project's Prismic repository name.
- */
-export const repositoryName =
-  process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || config.repositoryName;
+export const endpoint = "https://amaitsuki.cdn.prismic.io/api/v2";
+export const repositoryName = "amaitsuki";
 
 /**
  * A list of Route Resolver objects that define how a document's `url` field is resolved.
@@ -17,16 +14,32 @@ export const repositoryName =
  */
 // TODO: Update the routes array to match your project's route structure.
 const routes = [
-  // Examples:
-  // {
-  // 	type: "homepage",
-  // 	path: "/",
-  // },
-  // {
-  // 	type: "page",
-  // 	path: "/:uid",
-  // },
+  {
+  	type: "homepage",
+  	path: "/",
+  },
+  {
+  	type: "page",
+  	path: "/:uid",
+  },
+  {
+  	type: "member",
+  	path: "/members/:uid",
+  },
 ];
+
+export const linkResolver = doc => {
+  switch (doc.type) {
+    case 'homepage':
+      return '/'
+    case 'page':
+      return `/${doc.uid}`
+    case 'member':
+      return `/members/${doc.uid}`
+    default:
+      return null
+  }
+}
 
 /**
  * Creates a Prismic client for the project's repository. The client is used to
