@@ -2,21 +2,24 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { createClient } from "@/prismicio";
 import styles from './Memberlist.module.scss';
 
-const client = createClient();
-const members = await client.getAllByType("member", {
-  orderings: [
-    {
-      field: 'my.member.generation',
-      direction: 'asc',
-    },
-    {
-      field: 'my.member.name',
-      direction: 'asc',
-    },
-  ],
-});
-
-const Memberlist = () => {
+export default async function Memberlist() {
+    const client = createClient();
+    const members = await client.getAllByType("member", {
+        fetchOptions: {
+            cache: 'no-store',
+            next: { tags: ['prismic', 'member'] },
+          },
+        orderings: [
+            {
+                field: 'my.member.generation',
+                direction: 'asc',
+            },
+            {
+                field: 'my.member.name',
+                direction: 'asc',
+            },
+        ],
+    });
 
   return (
     <section
@@ -42,5 +45,3 @@ const Memberlist = () => {
     </section>
   );
 };
-
-export default Memberlist;
