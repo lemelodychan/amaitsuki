@@ -4,10 +4,6 @@
  * @param {NavItemProps}
  */
 import { PrismicNextLink } from "@prismicio/next";
-import { createClient } from "@/prismicio";
-
-const client = createClient();
-const navleft = await client.getSingle("global_nav");
 
 const NavLeft = ({ slice }) => {
   return (
