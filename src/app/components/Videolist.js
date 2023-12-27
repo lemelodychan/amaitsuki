@@ -3,7 +3,6 @@ import { createClient } from "@/prismicio";
 import styles from './Videolist.module.scss';
 
 import YoutubeEmbed from "./YoutubeEmbed";
-import LikeButton from "./LikeButton";
 
 export default async function Videolist() {
   const client = createClient();
