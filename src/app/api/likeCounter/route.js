@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-const DATA_FILE = path.resolve('../data.json');
+const DATA_FILE = path.resolve('../../data.json');
 
 export default async function handler(req, res) {
     // Enable CORS for all routes
