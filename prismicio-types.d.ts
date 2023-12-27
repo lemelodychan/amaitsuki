@@ -52,7 +52,7 @@ export type GlobalNavDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomepageDocumentDataSlicesSlice = HeroSlice;
+type HomepageDocumentDataSlicesSlice = VideoListSlice | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -353,11 +353,139 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
+type VideoDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Video documents
+ */
+interface VideoDocumentData {
+  /**
+   * Publication Date field in *Video*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.publication_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  publication_date: prismic.DateField;
+
+  /**
+   * Title field in *Video*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Artist field in *Video*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.artist
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  artist: prismic.KeyTextField;
+
+  /**
+   * URL field in *Video*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.url
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  url: prismic.LinkField;
+
+  /**
+   * Featured Image field in *Video*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Youtube ID field in *Video*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.youtube_id
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  youtube_id: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Video*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<VideoDocumentDataSlicesSlice> /**
+   * Meta Description field in *Video*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: video.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Video*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Video*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: video.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Video document from Prismic
+ *
+ * - **API ID**: `video`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type VideoDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<VideoDocumentData>, "video", Lang>;
+
 export type AllDocumentTypes =
   | GlobalNavDocument
   | HomepageDocument
   | MemberDocument
-  | PageDocument;
+  | PageDocument
+  | VideoDocument;
 
 /**
  * Primary content in *Hero → Primary*
@@ -608,6 +736,36 @@ export type NavRightSlice = prismic.SharedSlice<
   NavRightSliceVariation
 >;
 
+/**
+ * Default variation for VideoList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoListSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *VideoList*
+ */
+type VideoListSliceVariation = VideoListSliceDefault;
+
+/**
+ * VideoList Shared Slice
+ *
+ * - **API ID**: `video_list`
+ * - **Description**: VideoList
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoListSlice = prismic.SharedSlice<
+  "video_list",
+  VideoListSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -631,6 +789,9 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      VideoDocument,
+      VideoDocumentData,
+      VideoDocumentDataSlicesSlice,
       AllDocumentTypes,
       HeroSlice,
       HeroSliceDefaultPrimary,
@@ -652,6 +813,9 @@ declare module "@prismicio/client" {
       NavRightSliceDefaultItem,
       NavRightSliceVariation,
       NavRightSliceDefault,
+      VideoListSlice,
+      VideoListSliceVariation,
+      VideoListSliceDefault,
     };
   }
 }

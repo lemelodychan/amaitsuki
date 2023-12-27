@@ -1,0 +1,66 @@
+.Video_Container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    position: relative;
+    z-index: 2;
+
+    .Video_Grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 64px 48px;
+        position: relative;
+        z-index: 2;
+
+        .Video_Card {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            border-radius: 8px;
+            overflow: hidden;
+
+            .Video {
+                width: 100% !important;
+                height: auto !important;
+                aspect-ratio: 1920/1080 !important;
+                border-radius: 8px;
+                overflow: hidden;
+
+                iframe {
+                    width: 100%;
+                    height: auto;
+                    aspect-ratio: 1920/1080 !important;
+                }
+            }
+
+            .Video_Image {
+                width: 100%;
+                height: auto;
+                border-radius: 8px;
+            }
+
+            .info {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                font-family: var(--font-title);
+                font-style: normal;
+                text-transform: uppercase;
+                font-weight: 600;
+
+                .title {
+                    font-size: 16px;
+                    line-height: 32px;
+                    letter-spacing: 2.4px;
+                }
+                .artist {
+                    color: var(--midgrey);
+                    font-size: 12px;
+                    line-height: 16px;
+                    letter-spacing: 1.8px;
+                }
+            }
+
+        }
+    }
+}
