@@ -3,6 +3,20 @@ import path from 'path';
 
 const DATA_FILE = path.resolve('../data.json');
 
+// Enable CORS for all routes
+res.setHeader('Access-Control-Allow-Credentials', true);
+res.setHeader('Access-Control-Allow-Origin', '*');
+res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+res.setHeader(
+  'Access-Control-Allow-Headers',
+  'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json'
+);
+
+if (req.method === 'OPTIONS') {
+  res.status(200).end();
+  return;
+}
+
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         const { uid, likeCount } = req.body;

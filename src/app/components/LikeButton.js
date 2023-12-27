@@ -13,7 +13,7 @@ const LikeButton = ({ uid }) => {
     };
 
     try {
-      const response = await fetch('/api/likeCounter', {
+      const response = await fetch('../api/likeCounter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
