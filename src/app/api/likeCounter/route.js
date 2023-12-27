@@ -1,44 +1,38 @@
+// src/app/api/likeCounter/route.js
+
 import fs from 'fs/promises';
 import path from 'path';
+import nc from 'next-connect';
 
-const DATA_FILE = path.resolve('../../data.json');
+const handler = nc();
 
-export default async function handler(req, res) {
-    // Enable CORS for all routes
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json'
-    );
+const DATA_FILE = path.resolve(__dirname, '../../data.json');
 
-    if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
-    }
+handler.get(async (req, res) => {
+  try {
+    const data = await fs.readFile(DATA_FILE, 'utf8');
+    const jsonData = JSON.parse(data);
+    const likeCount = jsonData.likeCount || 0;
+    res.status(200).json({ success: true, likeCount });
+  } catch (error) {
+    console.error('Error handling GET request:', error);
+    res.status(500).json({ success: false, message: 'Internal Server Error' });
+  }
+});
 
-    if (req.method === 'POST') {
-        const { uid, likeCount } = req.body;
+handler.post(async (req, res) => {
+  try {
+    const data = await fs.readFile(DATA_FILE, 'utf8');
+    const jsonData = JSON.parse(data);
+    jsonData.likeCount = (jsonData.likeCount || 0) + 1;
 
-        let jsonData = {};
-        try {
-        const data = await fs.readFile(DATA_FILE, 'utf-8');
-        jsonData = JSON.parse(data);
-        } catch (error) {
-        console.error('Error reading data file:', error);
-        }
+    await fs.writeFile(DATA_FILE, JSON.stringify(jsonData, null, 2), 'utf8');
 
-        jsonData[uid] = likeCount;
+    res.status(200).json({ success: true, updatedCount: jsonData.likeCount });
+  } catch (error) {
+    console.error('Error handling POST request:', error);
+    res.status(500).json({ success: false, message: 'Internal Server Error' });
+  }
+});
 
-        try {
-        await fs.writeFile(DATA_FILE, JSON.stringify(jsonData, null, 2), 'utf-8');
-        } catch (error) {
-        console.error('Error writing data file:', error);
-        }
-
-        res.json({ success: true });
-    } else {
-        res.status(405).json({ error: 'Method Not Allowed' });
-    }
-}
+export default handler;

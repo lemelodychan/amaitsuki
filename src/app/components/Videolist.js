@@ -34,7 +34,7 @@ return (
             <span className={styles.title}>{video.data.title}</span>
             <span className={styles.artist}>Originally by {video.data.artist}</span>
           </p>
-          <LikeButton uid={video.data.youtube_id} />
+          {/* <LikeButton uid={video.data.youtube_id} /> */}
         </div>
       ))}
     </div>
