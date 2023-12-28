@@ -18,9 +18,7 @@ export async function generateMetadata({ params }) {
   export default async function Page({ params }) {
     const client = createClient();
   
-    const casestudy = await client
-    .getByUID("page", params.uid)
-    .catch(() => notFound());
+    const casestudy = await client.getByUID("page", params.uid)
   
     return (
       <div className={styles.main}>
