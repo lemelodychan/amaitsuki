@@ -19,7 +19,13 @@ export async function generateMetadata({ params }) {
     try {
       console.log('Fetching page data for UID:', params.uid);
       const client = createClient();
-      const page = await client.getByUID("page", params.uid);
+      const masterRef = 'ZY1HERAAACAAcL2V';
+      const page = await client.getByUID("page", params.uid, { ref: masterRef });
+      if (!page) {
+        console.log('Page not found:', params.uid);
+        return <div>Page not found</div>;
+      }
+
       console.log('Page data:', page);
   
       if (!page) {
