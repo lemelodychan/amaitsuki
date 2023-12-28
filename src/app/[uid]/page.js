@@ -6,40 +6,28 @@ import styles from './page.module.scss';
 import { PrismicRichText } from "@prismicio/react";
   
 export async function generateMetadata({ params }) {
-    const client = createClient();
-    const page = await client.getByUID("page", params.uid);
-  
-    return {
-      title: page.data.meta_title,
-      description: page.data.meta_description,
-    };
-  }
-  
+  const client = createClient();
+  const page = await client.getByUID("page", params.uid);
+
+  return {
+    title: page.data.meta_title,
+    description: page.data.meta_description,
+  };
+}
+
   export default async function Page({ params }) {
-    try {
-      console.log('Fetching page data for UID:', params.uid);
-      const client = createClient();
-
-      const page = await client.getByUID("page", params.uid);
-
-      console.log('Page data:', page);
+    const client = createClient();
   
-      if (!page) {
-        console.log('Page not found:', params.uid);
-        return <div>Page not found</div>;
-      }
+    const casestudy = await client
+    .getByUID("page", params.uid)
+    .catch(() => notFound());
   
-      return (
-        <div className={styles.main}>
-          <div className={styles.container}>
-            <PrismicRichText field={page.data.title} />
-            <SliceZone slices={page.data.slices} components={components} />
-          </div>
+    return (
+      <div className={styles.main}>
+        <div className={styles.container}>
+          <PrismicRichText field={page.data.title} />
+          <SliceZone slices={page.data.slices} components={components} />
         </div>
-      );
-    } catch (error) {
-      console.error('Error fetching page data:', error);
-      return <div>Error fetching page data</div>;
-    }
+      </div>
+    );
   }
-  
