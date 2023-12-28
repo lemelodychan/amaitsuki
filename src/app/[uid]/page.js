@@ -15,17 +15,25 @@ export async function generateMetadata({ params }) {
   };
 }
 
-  export default async function Page({ params }) {
-    const client = createClient();
-  
-    const casestudy = await client.getByUID("page", params.uid)
-  
-    return (
-      <div className={styles.main}>
-        <div className={styles.container}>
-          <PrismicRichText field={page.data.title} />
-          <SliceZone slices={page.data.slices} components={components} />
-        </div>
+export async function generateStaticParams() {
+  const client = createClient();
+  const pages = await client.getAllByType("page");
+
+  return pages.map((page) => {
+    return { uid: page.uid };
+  });
+}
+
+export default async function Page({ params }) {
+  const client = createClient();
+  const page = await client.getByUID("page", params.uid)
+
+  return (
+    <div className={styles.main}>
+      <div className={styles.container}>
+        <PrismicRichText field={page.data.title} />
+        <SliceZone slices={page.data.slices} components={components} />
       </div>
-    );
-  }
+    </div>
+  );
+}
