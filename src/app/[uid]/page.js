@@ -16,15 +16,28 @@ export async function generateMetadata({ params }) {
   }
   
   export default async function Page({ params }) {
-    const client = createClient();
-    const page = await client.getByUID("page", params.uid);
-
-    return (
-      <div className={styles.main}>
-        <div className={styles.container}>
+    try {
+      console.log('Fetching page data for UID:', params.uid);
+      const client = createClient();
+      const page = await client.getByUID("page", params.uid);
+      console.log('Page data:', page);
+  
+      if (!page) {
+        console.log('Page not found:', params.uid);
+        return <div>Page not found</div>;
+      }
+  
+      return (
+        <div className={styles.main}>
+          <div className={styles.container}>
             <PrismicRichText field={page.data.title} />
             <SliceZone slices={page.data.slices} components={components} />
+          </div>
         </div>
-      </div>
-    );
-  };
+      );
+    } catch (error) {
+      console.error('Error fetching page data:', error);
+      return <div>Error fetching page data</div>;
+    }
+  }
+  

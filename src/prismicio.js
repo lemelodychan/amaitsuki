@@ -4,7 +4,6 @@ import config from "../slicemachine.config.json";
 
 export const endpoint = "https://amaitsuki.cdn.prismic.io/api/v2";
 export const repositoryName = "amaitsuki";
-const masterRef = 'ZY0-oBAAACAAcJbe'; // Add the master reference here
 
 /**
  * A list of Route Resolver objects that define how a document's `url` field is resolved.
@@ -55,8 +54,8 @@ export const createClient = (config = {}) => {
     accessToken: process.env.PRISMIC_ACCESS_TOKEN,
     fetchOptions:
       process.env.NODE_ENV === "production"
-        ? { next: { tags: ["prismic"] }, cache: "force-cache", ref: masterRef } // Include the master reference in production
-        : { next: { revalidate: 5 }, ref: masterRef }, // Include the master reference in development as well
+        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
+        : { next: { revalidate: 5 } },
     ...config,
   });
 

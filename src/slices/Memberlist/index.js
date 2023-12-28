@@ -9,7 +9,7 @@ import Memberlist from "@/app/components/Memberlist";
 const MemberSlice = ({ slice }) => {
   return (
     <>
-      {/* <Memberlist /> */}
+      <Memberlist />
     </>
   );
 };
