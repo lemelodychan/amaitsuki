@@ -14,7 +14,7 @@ export default async function Videolist() {
       orderings: [
           {
               field: 'my.video.publication_date',
-              direction: 'asc',
+              direction: 'desc',
           },
       ],
   });
