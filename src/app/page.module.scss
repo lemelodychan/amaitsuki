@@ -1,14 +1,32 @@
-@use "./styles/mixins.scss" as *;
+@use "./styles/mixins" as mixins;
 
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 3rem;
-  min-height: 100vh;
+  padding: 0 2rem;
+
+  @include mixins.md {
+    padding: 0rem 3rem;
+  }
+
+  margin: auto;
+  position: relative;
+  min-height: calc(100vh - var(--menu-height)) !important;
+  height: auto!important;
+
+  &:after {
+    display: block;
+    width: 665px;
+    height: 577px;
+    content: " ";
+    background-image: url(./assets/Shape1.svg);
+    background-size: contain;
+    position: absolute;
+    top: 50px;
+    right: -400px;
+    z-index: 1;
+  }
 
   .content {
     width: 100%;
   }
+
 }

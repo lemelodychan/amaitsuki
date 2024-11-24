@@ -4,6 +4,7 @@
  * @param {HeroProps}
  */
 import styles from './page.module.scss'
+
 import { PrismicNextImage } from "@prismicio/next";
 
 const Hero = ({ slice }) => {

@@ -1,3 +1,5 @@
+@use "../styles/mixins" as mixins;
+
 .Video_Container {
     display: flex;
     flex-direction: column;
@@ -7,23 +9,30 @@
 
     .Video_Grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 64px 48px;
+        grid-template-columns: 1fr;
+        grid-gap: 32px;
         position: relative;
         z-index: 2;
+
+        @include mixins.md { 
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 64px 48px;
+        }
 
         .Video_Card {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            border-radius: 8px;
-            overflow: hidden;
+            gap: 8px;
+
+            @include mixins.md { 
+                gap: 16px;
+            }
 
             .Video {
                 width: 100% !important;
                 height: auto !important;
                 aspect-ratio: 1920/1080 !important;
-                border-radius: 8px;
+                border-radius: 16px;
                 overflow: hidden;
 
                 iframe {
@@ -42,11 +51,15 @@
             .info {
                 display: flex;
                 flex-direction: column;
-                gap: 8px;
+                gap: 4px;
                 font-family: var(--font-title);
                 font-style: normal;
                 text-transform: uppercase;
                 font-weight: 600;
+
+                @include mixins.md { 
+                    gap: 8px;
+                }
 
                 .title {
                     font-size: 16px;

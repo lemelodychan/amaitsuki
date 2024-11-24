@@ -1,3 +1,5 @@
+@use "../styles/mixins" as mixins;
+
 .Member_Container {
     display: flex;
     flex-direction: column;
@@ -7,9 +9,14 @@
 
     .Member_Tags {
         display: flex;
-        gap: 16px;
+        flex-wrap: wrap;
+        gap: 8px;
         position: relative;
         z-index: 2;
+
+        @include mixins.md { 
+            gap: 16px;
+        }
 
         .tag {
             text-transform: uppercase;
@@ -27,6 +34,8 @@
             border: 1px solid var(--at-purple);
             transition: var(--transi);
 
+            background: white;
+
             &:hover {
                 color: var(--at-peach);
                 border: 1px solid var(--at-peach);
@@ -43,20 +52,44 @@
 
     .Member_Grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 64px 48px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 32px 16px;
         position: relative;
         z-index: 2;
+
+        @include mixins.md { 
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 64px 48px;
+        }
 
         .Member_Card {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 8px;
+
+            @include mixins.md { 
+                gap: 16px;
+            }
 
             .Member_Image {
                 width: 100%;
                 height: auto;
+                aspect-ratio: 1024/1280;
+                object-fit: cover;
+                object-position: center;
                 border-radius: 8px;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    transform: scale(100%);
+                    transition: var(--transi);
+                }
+            }
+
+            &:hover .Member_Image img {
+                transform: scale(105%);
             }
 
             .info {

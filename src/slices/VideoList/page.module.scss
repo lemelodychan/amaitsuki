@@ -1,16 +1,7 @@
-.container {
-    padding: 6rem 3rem;
-    max-width: 1200px;
-    margin: auto;
-    position: relative;
+@use "../../app/styles/mixins" as mixins;
 
-    h2 {
-        font-family: var(--font-title);
-        font-size: 24px;
-        text-transform: uppercase;
-        height: 40px;
-        letter-spacing: 7.2px;
-        font-weight: 600;
-        margin-bottom: 56px;
-    }
+.container {
+    max-width: 1200px;
+    margin: 3rem auto 2rem auto;
+    position: relative;
 }

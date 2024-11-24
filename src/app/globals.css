@@ -2,7 +2,8 @@
   --max-width: 1200px;
   --menu-height: 96px;
 
-  --logo-size: 4rem;
+  --logo-size-desktop: 64px;
+  --logo-size-mobile: 48px;
   --font-text-en: 'Satoshi';
   --font-text-jp: 'Noto Sans JP';
   --font-title-en: 'Quicksand';
@@ -84,6 +85,30 @@ button:hover {
   color: var(--at-peach);
   border: 1px solid var(--at-peach);
   cursor: pointer;
+}
+
+h1 {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-title);
+  font-size: 24px;
+  text-transform: uppercase;
+  height: 40px;
+  letter-spacing: var(--spacing-s);
+  font-weight: 600;
+  margin: var(--spacing-l) 0 var(--spacing-xxl) 0;
+}
+
+h2 {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-title);
+  font-size: 24px;
+  text-transform: uppercase;
+  height: 40px;
+  letter-spacing: var(--spacing-s);
+  font-weight: 600;
+  margin: var(--spacing-l) 0 var(--spacing-xxl) 0;
 }
 
 @media (prefers-color-scheme: dark) {

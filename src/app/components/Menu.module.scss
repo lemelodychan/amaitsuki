@@ -1,17 +1,33 @@
+@use "../styles/mixins" as mixins;
+
 .Menu {
     width: 100%;
     height: var(--menu-height);
-    padding: 1rem 3rem;
+    padding: 16px;
+
+    position: relative;
+    top: 0px;
+    z-index: 3;
 
     display: grid;
-    grid-template-columns: auto var(--logo-size) auto;
+    grid-template-columns: 1fr var(--logo-size-mobile) 1fr;
+
+    @include mixins.md {
+        grid-template-columns: 1fr var(--logo-size-desktop) 1fr;
+    }
+
     grid-gap: 32px;
+    align-items: center;
 
     > a {
 
         img {
-            width: var(--logo-size);
+            width: var(--logo-size-mobile);
             height: auto;
+
+            @include mixins.md {
+                width: var(--logo-size-desktop);
+            }
         }
     }
 

@@ -33,16 +33,19 @@ export default async function Memberlist() {
     <section
       className={styles.Member_Container}
     >
-      <div className={styles.Member_Tags}>
+      {/* <div className={styles.Member_Tags}>
         <span className={styles.tag} data-type="All">All members</span>
         <span className={styles.tag} data-type="Fulltime">Full-time</span>
         <span className={styles.tag} data-type="Learning">Learning</span>
         <span className={styles.tag} data-type="Parttime">Part-time</span>
-      </div>
+      </div> */}
+      
       <div className={styles.Member_Grid}>
         {members.map((member) => (
           <PrismicNextLink key={member.id} data-type={member.data.status} className={styles.Member_Card} href={`/members/${sanitizeTitle(member.data.name)}`}>
-            <PrismicNextImage field={member.data.profilepic} className={styles.Member_Image} />
+            <div className={styles.Member_Image}>
+              <PrismicNextImage field={member.data.profilepic} />
+            </div>
             <p className={styles.info}>
               <span className={styles.name}>{member.data.name}</span>
               <span className={styles.status}>{member.data.status} member</span>

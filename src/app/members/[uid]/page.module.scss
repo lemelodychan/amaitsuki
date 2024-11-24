@@ -27,12 +27,6 @@
     }
 
     h1 {
-        font-family: var(--font-title);
-        font-size: 24px;
-        text-transform: uppercase;
-        height: 40px;
-        letter-spacing: var(--spacing-s);
-        font-weight: 600;
         margin: 48px 0 var(--spacing-l) 0;
     }
 
@@ -74,11 +68,20 @@
 
                 font: var(--font-1);
                 line-height: 28px;
+
+                &:empty {
+                    display: none !important;
+                }
             }
 
             .taglist {
                 display: inline-flex;
-                gap: var(--spacing-l);
+                flex-wrap: wrap;
+                gap: var(--spacing-m);
+
+                @include mixins.md {
+                    gap: var(--spacing-l);
+                }
 
                 div {
                     font-family: var(--font-title);
