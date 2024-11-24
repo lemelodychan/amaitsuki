@@ -1,11 +1,17 @@
 :root {
   --max-width: 1200px;
+  --menu-height: 96px;
+
   --logo-size: 4rem;
   --font-text-en: 'Satoshi';
   --font-text-jp: 'Noto Sans JP';
   --font-title-en: 'Quicksand';
   --font-text: var(--font-text-en), var(--font-text-jp), Helvetica, Arial, sans-serif;
   --font-title: var(--font-title-en), var(--font-text-jp), Helvetica, Arial, sans-serif;
+
+  --font-1: 16px/24px var(--font-text);
+  --font-2: 14px/21px var(--font-text);
+  --font-small: 12px/20px var(--font-text);
 
   --white: #ffffff;
   --midgrey: #999999;
@@ -19,6 +25,17 @@
   --at-gradient: linear-gradient(var(--gradient-angle),var(--at-purple), var(--at-peach));
 
   --transi: all 0.3s ease;
+
+  --border-radius-s: 4px;
+  --border-radius-m: 8px;
+  --border-radius-l: 16px;
+
+  --spacing-xs: 2px;
+  --spacing-s: 4px;
+  --spacing-m: 8px;
+  --spacing-l: 16px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
 }
 ::selection {
   background: rgba(var(--at-purple-rgb),0.5);
@@ -34,17 +51,39 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: var(--font-text);
+  font: var(--font-1);
+  color: var(--at-darkgrey);;
 }
 
 body {
-  color: var(--at-darkgrey);
   background: white;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button {
+  background-color: transparent;
+  font: var(--font-small);
+  font-weight: 500;
+  letter-spacing: var(--spacing-xs);
+  text-transform: uppercase;
+  display: flex;
+  gap: var(--spacing-m);
+  padding: var(--spacing-m) calc(var(--spacing-m) + var(--spacing-s));
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius-m);
+  color: var(--at-purple);
+  border: 1px solid var(--at-purple);
+  transition: var(--transi);
+}
+button:hover {
+  color: var(--at-peach);
+  border: 1px solid var(--at-peach);
+  cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -42,6 +42,15 @@
           "thumbnails": []
         }
       },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,heading3,heading4,heading5,heading6,strong,em"
+        }
+      },
       "sns": {
         "type": "Group",
         "config": {

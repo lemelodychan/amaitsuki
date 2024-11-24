@@ -1,0 +1,112 @@
+@use "../../styles/mixins" as mixins;
+
+.main {
+    padding: 2rem;
+
+    @include mixins.md {
+        padding: 4rem 3rem;
+    }
+    
+    max-width: 960px;
+    margin: auto;
+    position: relative;
+    min-height: calc(100vh - var(--menu-height)) !important;
+    height: auto!important;
+
+    &:after {
+        display: block;
+        width: 665px;
+        height: 577px;
+        content: " ";
+        background-image: url(../../../app/assets/Shape1.svg);
+        background-size: contain;
+        position: absolute;
+        top: 50px;
+        right: -400px;
+        z-index: 1;
+    }
+
+    h1 {
+        font-family: var(--font-title);
+        font-size: 24px;
+        text-transform: uppercase;
+        height: 40px;
+        letter-spacing: var(--spacing-s);
+        font-weight: 600;
+        margin: 48px 0 var(--spacing-l) 0;
+    }
+
+    .MemberInfo {
+        width: 100%;
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-gap: var(--spacing-xl);
+        position: relative;
+        z-index: 2;
+        margin-bottom: 40px;
+
+        @include mixins.md {
+            grid-template-columns: 1fr 2fr;
+        }
+
+        .MemberInfo_Image {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-l);
+        }
+
+        .MemberInfo_Content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xl);
+
+            .MemberInfo_Description {
+                @include mixins.md {
+                    background-color: white;
+                    padding: var(--spacing-l);
+                    border-radius: var(--border-radius-l);
+                }
+
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-m);
+
+                font: var(--font-1);
+                line-height: 28px;
+            }
+
+            .taglist {
+                display: inline-flex;
+                gap: var(--spacing-l);
+
+                div {
+                    font-family: var(--font-title);
+                    text-transform: uppercase;
+                    font: var(--font-small);
+                    font-weight: 500;
+                    letter-spacing: var(--spacing-xs);
+                    text-transform: uppercase;
+                    display: flex;
+                    padding: var(--spacing-m) calc(var(--spacing-m) + var(--spacing-s));
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: var(--border-radius-m);
+        
+                    color: var(--at-purple);
+                    border: 1px solid var(--at-purple);
+                    transition: var(--transi);
+
+                    background: white;
+        
+                    &:first-child {
+                        background: linear-gradient(143deg, #BD96FD -3.55%, #F4C7C2 103.55%);
+                        color: var(--white);
+                        border: none;
+                    }
+                }
+            }   
+        }
+    }
+
+}

@@ -21,6 +21,14 @@ export default async function Memberlist() {
         ],
     });
 
+    const sanitizeTitle = (title) => {
+      return title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    };
+    
+
   return (
     <section
       className={styles.Member_Container}
@@ -33,13 +41,13 @@ export default async function Memberlist() {
       </div>
       <div className={styles.Member_Grid}>
         {members.map((member) => (
-          <div key={member.id} data-type={member.data.status} className={styles.Member_Card}>
+          <PrismicNextLink key={member.id} data-type={member.data.status} className={styles.Member_Card} href={`/members/${sanitizeTitle(member.data.name)}`}>
             <PrismicNextImage field={member.data.profilepic} className={styles.Member_Image} />
             <p className={styles.info}>
               <span className={styles.name}>{member.data.name}</span>
               <span className={styles.status}>{member.data.status} member</span>
             </p>
-          </div>
+          </PrismicNextLink>
         ))}
       </div>
     </section>
