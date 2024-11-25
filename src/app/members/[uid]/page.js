@@ -45,15 +45,11 @@ export default async function Page({ params }) {
           },
       ],
   });
-  // Filter videos where participants match the current member's UID
   const relatedVideos = videos.filter((video) =>
     video.data.participants.some(
       (participant) => participant.member?.uid === page.uid
     )
   );
-
-  // Log to verify the results
-  console.log("Related videos:", relatedVideos);
 
   return (
     <div className={styles.main}>
