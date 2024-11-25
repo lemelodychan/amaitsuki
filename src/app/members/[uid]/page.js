@@ -12,7 +12,12 @@ import { TbChevronLeft } from "react-icons/tb";
   
 export async function generateMetadata({ params }) {
   const client = createClient();
-  const page = await client.getByUID("member", params.uid);
+  const page = await client.getByUID("member", params.uid, {
+    fetchOptions: {
+      cache: 'no-store', // Prevents Next.js from caching this request
+      next: { revalidate: 0 }, // Disables ISR for this request
+    },
+  });
 
   return {
     title: page.data.meta_title,
@@ -47,19 +52,16 @@ export default async function Page({ params }) {
   });
   const relatedVideos = videos.filter((video) => {
     const participants = video.data.participants;
-  
     // Check if participants is valid and an array
     if (!Array.isArray(participants)) {
       console.error(`Skipping video ${video.id} due to invalid participants format.`);
       return false;
     }
-  
     // Filter videos based on the member UID
     return participants.some(
-      (participant) => participant.member?.uid === page.uid
+      (participant) => participant.member?.uid === params.uid
     );
   });
-  
 
   return (
     <div className={styles.main}>
