@@ -1,12 +1,12 @@
 import { createClient } from "@/prismicio";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
+import YoutubeEmbed from "@/app/components/YoutubeEmbed";
 import styles from './page.module.scss';
 
 import Link from "next/link";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import YoutubeEmbed from "@/app/components/YoutubeEmbed";
 
 import { TbChevronLeft } from "react-icons/tb";
   
@@ -71,16 +71,14 @@ export default async function Page({ params }) {
                 </div>
             </div>
         </div>
-        {relatedVideos.length > 0 && (
-          <div>
-            <h3>Participated in:</h3>
-            <div className={styles.VideoGrid}>
-              {relatedVideos.map((video) => (
-                <YoutubeEmbed key={video.id} videoId={video.data.youtube_id} />
-              ))}
-            </div>
+        <div>
+          <h3>Participated in:</h3>
+          <div className={styles.VideoGrid}>
+            {relatedVideos.map((video) => (
+              <YoutubeEmbed key={video.id} videoId={video.data.youtube_id} />
+            ))}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
