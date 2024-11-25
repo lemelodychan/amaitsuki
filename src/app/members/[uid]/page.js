@@ -75,14 +75,16 @@ export default async function Page({ params }) {
                 </div>
             </div>
         </div>
-        <div>
-          <h3>Participated in:</h3>
-          <div className={styles.VideoGrid}>
-            {relatedVideos.map((video) => (
-              <YoutubeEmbed key={video.id} videoId={video.data.youtube_id} />
-            ))}
+        {relatedVideos.length > 0 && (
+          <div>
+            <h3>Participated in:</h3>
+            <div className={styles.VideoGrid}>
+              {relatedVideos.map((video) => (
+                <YoutubeEmbed key={video.id} videoId={video.data.youtube_id} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

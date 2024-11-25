@@ -7,24 +7,25 @@ import YoutubeEmbed from "./YoutubeEmbed";
 export default async function Videolist() {
   const client = createClient();
   const videos = await client.getAllByType("video", {
-      fetchOptions: {
-          cache: 'no-store',
-          next: { tags: ['prismic', 'video'] },
+    fetchOptions: {
+        cache: 'no-store',
+        next: { tags: ['prismic', 'video'] },
+      },
+    orderings: [
+        {
+            field: 'my.video.publication_date',
+            direction: 'desc',
         },
-      orderings: [
-          {
-              field: 'my.video.publication_date',
-              direction: 'desc',
-          },
-      ],
+    ],
   });
+  const latestVideos = videos.slice(0, 4);
 
 return (
   <section
     className={styles.Video_Container}
   >
     <div className={styles.Video_Grid}>
-      {videos.map((video) => (
+      {latestVideos.map((video) => (
         <div key={video.id} className={styles.Video_Card}>
           <div className={styles.Video}>
               <YoutubeEmbed videoId={video.data.youtube_id} />

@@ -9,7 +9,7 @@ import Videolist from "@/app/components/Videolist";
 const VideoList = ({ slice }) => {
   return (
     <section className={styles.container}>
-      <h2>Videos</h2>
+      <h2>Latest Videos</h2>
       <Videolist />
     </section>
   );
