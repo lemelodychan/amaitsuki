@@ -364,6 +364,21 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
+/**
+ * Item in *Video → Participants*
+ */
+export interface VideoDocumentDataParticipantsItem {
+  /**
+   * Member field in *Video → Participants*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.participants[].member
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  member: prismic.ContentRelationshipField<"member">;
+}
+
 type VideoDocumentDataSlicesSlice = never;
 
 /**
@@ -435,6 +450,17 @@ interface VideoDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   youtube_id: prismic.KeyTextField;
+
+  /**
+   * Participants field in *Video*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.participants[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  participants: prismic.GroupField<Simplify<VideoDocumentDataParticipantsItem>>;
 
   /**
    * Slice Zone field in *Video*
@@ -748,6 +774,68 @@ export type NavRightSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Participants → Default → Primary → Members*
+ */
+export interface ParticipantsSliceDefaultPrimaryMembersItem {
+  /**
+   * Member field in *Participants → Default → Primary → Members*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: participants.default.primary.members[].member
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  member: prismic.ContentRelationshipField<"member">;
+}
+
+/**
+ * Primary content in *Participants → Default → Primary*
+ */
+export interface ParticipantsSliceDefaultPrimary {
+  /**
+   * Members field in *Participants → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: participants.default.primary.members[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  members: prismic.GroupField<
+    Simplify<ParticipantsSliceDefaultPrimaryMembersItem>
+  >;
+}
+
+/**
+ * Default variation for Participants Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ParticipantsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ParticipantsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Participants*
+ */
+type ParticipantsSliceVariation = ParticipantsSliceDefault;
+
+/**
+ * Participants Shared Slice
+ *
+ * - **API ID**: `participants`
+ * - **Description**: Participants
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ParticipantsSlice = prismic.SharedSlice<
+  "participants",
+  ParticipantsSliceVariation
+>;
+
+/**
  * Default variation for VideoList Slice
  *
  * - **API ID**: `default`
@@ -813,6 +901,7 @@ declare module "@prismicio/client" {
       PageDocumentDataSlicesSlice,
       VideoDocument,
       VideoDocumentData,
+      VideoDocumentDataParticipantsItem,
       VideoDocumentDataSlicesSlice,
       AllDocumentTypes,
       HeroSlice,
@@ -835,6 +924,11 @@ declare module "@prismicio/client" {
       NavRightSliceDefaultItem,
       NavRightSliceVariation,
       NavRightSliceDefault,
+      ParticipantsSlice,
+      ParticipantsSliceDefaultPrimaryMembersItem,
+      ParticipantsSliceDefaultPrimary,
+      ParticipantsSliceVariation,
+      ParticipantsSliceDefault,
       VideoListSlice,
       VideoListSliceVariation,
       VideoListSliceDefault,

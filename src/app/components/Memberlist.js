@@ -48,7 +48,7 @@ export default async function Memberlist() {
             </div>
             <p className={styles.info}>
               <span className={styles.name}>{member.data.name}</span>
-              <span className={styles.status}>{member.data.status} member</span>
+              <span className={styles.status}>Generation {member.data.generation}</span>
             </p>
           </PrismicNextLink>
         ))}

@@ -6,6 +6,7 @@ import styles from './page.module.scss';
 import Link from "next/link";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import YoutubeEmbed from "@/app/components/YoutubeEmbed";
 
 import { TbChevronLeft } from "react-icons/tb";
   
@@ -30,7 +31,29 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
   const client = createClient();
-  const page = await client.getByUID("member", params.uid)
+  const page = await client.getByUID("member", params.uid);
+
+  const videos = await client.getAllByType("video", {
+      fetchOptions: {
+          cache: 'no-store',
+          next: { tags: ['prismic', 'video'] },
+        },
+      orderings: [
+          {
+              field: 'my.video.publication_date',
+              direction: 'desc',
+          },
+      ],
+  });
+  // Filter videos where participants match the current member's UID
+  const relatedVideos = videos.filter((video) =>
+    video.data.participants.some(
+      (participant) => participant.member?.uid === page.uid
+    )
+  );
+
+  // Log to verify the results
+  console.log("Related videos:", relatedVideos);
 
   return (
     <div className={styles.main}>
@@ -46,12 +69,19 @@ export default async function Page({ params }) {
             <div className={styles.MemberInfo_Content}>
                 <div className={styles.taglist}>
                     <div className={styles.gen}>Generation {page.data.generation}</div>
-                    <div className={styles.status}>{page.data.status} Member</div>
                 </div>
                 <div className={styles.MemberInfo_Description}>
                     <PrismicRichText field={page.data.description} />
                 </div>
             </div>
+        </div>
+        <div>
+          <h3>Participated in:</h3>
+          <div className={styles.VideoGrid}>
+            {relatedVideos.map((video) => (
+              <YoutubeEmbed key={video.id} videoId={video.data.youtube_id} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

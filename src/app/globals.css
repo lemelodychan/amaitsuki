@@ -111,6 +111,18 @@ h2 {
   margin: var(--spacing-l) 0 var(--spacing-xxl) 0;
 }
 
+h3 {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-title);
+  font-size: 20px;
+  text-transform: uppercase;
+  height: 32px;
+  letter-spacing: var(--spacing-xs);
+  font-weight: 600;
+  margin: var(--spacing-m) 0 var(--spacing-xl) 0;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

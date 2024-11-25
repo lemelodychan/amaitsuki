@@ -57,6 +57,23 @@
           "placeholder": ""
         }
       },
+      "participants": {
+        "type": "Group",
+        "config": {
+          "label": "Participants",
+          "repeat": true,
+          "fields": {
+            "member": {
+              "type": "Link",
+              "config": {
+                "label": "Member",
+                "select": "document",
+                "customtypes": ["member"]
+              }
+            }
+          }
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
