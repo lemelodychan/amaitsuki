@@ -12,12 +12,7 @@ import { TbChevronLeft } from "react-icons/tb";
   
 export async function generateMetadata({ params }) {
   const client = createClient();
-  const page = await client.getByUID("member", params.uid, {
-    fetchOptions: {
-      cache: 'no-store', // Prevents Next.js from caching this request
-      next: { revalidate: 0 }, // Disables ISR for this request
-    },
-  });
+  const page = await client.getByUID("member", params.uid);
 
   return {
     title: page.data.meta_title,
@@ -36,7 +31,12 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
   const client = createClient();
-  const page = await client.getByUID("member", params.uid);
+  const page = await client.getByUID("member", params.uid, {
+    fetchOptions: {
+      cache: 'no-store',
+      next: { revalidate: 0 },
+    },
+  });
 
   const videos = await client.getAllByType("video", {
       fetchOptions: {
