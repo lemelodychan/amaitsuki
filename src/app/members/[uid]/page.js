@@ -45,11 +45,21 @@ export default async function Page({ params }) {
           },
       ],
   });
-  const relatedVideos = videos.filter((video) =>
-    video.data.participants.some(
+  const relatedVideos = videos.filter((video) => {
+    const participants = video.data.participants;
+  
+    // Check if participants is valid and an array
+    if (!Array.isArray(participants)) {
+      console.error(`Skipping video ${video.id} due to invalid participants format.`);
+      return false;
+    }
+  
+    // Filter videos based on the member UID
+    return participants.some(
       (participant) => participant.member?.uid === page.uid
-    )
-  );
+    );
+  });
+  
 
   return (
     <div className={styles.main}>
