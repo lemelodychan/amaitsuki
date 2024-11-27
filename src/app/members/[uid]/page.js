@@ -34,7 +34,6 @@ export default async function Page({ params }) {
   const page = await client.getByUID("member", params.uid, {
     fetchOptions: {
       cache: 'no-store',
-      next: { revalidate: 0 },
     },
   });
 
