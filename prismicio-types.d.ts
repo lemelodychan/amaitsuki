@@ -181,6 +181,17 @@ interface MemberDocumentData {
   name: prismic.KeyTextField;
 
   /**
+   * Profile picture field in *Member*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: member.profilepic
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  profilepic: prismic.ImageField<never>;
+
+  /**
    * Generation field in *Member*
    *
    * - **Field Type**: Number
@@ -192,28 +203,27 @@ interface MemberDocumentData {
   generation: prismic.NumberField;
 
   /**
-   * Status field in *Member*
+   * Is active? field in *Member*
    *
-   * - **Field Type**: Select
+   * - **Field Type**: Boolean
    * - **Placeholder**: *None*
-   * - **API ID Path**: member.status
+   * - **Default Value**: true
+   * - **API ID Path**: member.is_active
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#select
+   * - **Documentation**: https://prismic.io/docs/field#boolean
    */
-  status: prismic.SelectField<
-    "Full-time" | "Learning" | "Part-time" | "Hiatus"
-  >;
+  is_active: prismic.BooleanField;
 
   /**
-   * Profile picture field in *Member*
+   * Color field in *Member*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: member.profilepic
+   * - **API ID Path**: member.color
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  profilepic: prismic.ImageField<never>;
+  color: prismic.KeyTextField;
 
   /**
    * Description field in *Member*

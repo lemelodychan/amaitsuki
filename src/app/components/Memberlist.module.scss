@@ -3,9 +3,15 @@
 .Member_Container {
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 16px;
+    margin-bottom: 48px;
     position: relative;
     z-index: 2;
+
+    @include mixins.md { 
+        gap: 24px;
+        margin-bottom: 72px;
+    }
 
     .Member_Tags {
         display: flex;

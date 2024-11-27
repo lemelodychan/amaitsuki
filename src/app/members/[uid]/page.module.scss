@@ -96,16 +96,29 @@
                     align-items: center;
                     border-radius: var(--border-radius-m);
         
-                    color: var(--at-purple);
-                    border: 1px solid var(--at-purple);
+                    color: var(--white);
                     transition: var(--transi);
 
                     background: white;
         
                     &:first-child {
                         background: linear-gradient(143deg, #BD96FD -3.55%, #F4C7C2 103.55%);
-                        color: var(--white);
-                        border: none;
+                    }
+
+                    &.color {
+                        color: var(--at-purple);
+                        border: 1px solid var(--at-purple);
+                        display: flex;
+                        gap: 8px;
+
+                        &:before {
+                            height: 12px;
+                            width: 12px;
+                            display: block;
+                            border-radius: 50%;
+                            content: "";
+                            background-color: var(--member-color);
+                        }
                     }
                 }
             }   

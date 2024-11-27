@@ -19,6 +19,14 @@
           "placeholder": ""
         }
       },
+      "profilepic": {
+        "type": "Image",
+        "config": {
+          "label": "Profile picture",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "generation": {
         "type": "Number",
         "config": {
@@ -26,20 +34,20 @@
           "placeholder": ""
         }
       },
-      "status": {
-        "type": "Select",
+      "is_active": {
+        "type": "Boolean",
         "config": {
-          "label": "Status",
-          "placeholder": "",
-          "options": ["Full-time", "Learning", "Part-time", "Hiatus"]
+          "label": "Is active?",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": true
         }
       },
-      "profilepic": {
-        "type": "Image",
+      "color": {
+        "type": "Text",
         "config": {
-          "label": "Profile picture",
-          "constraint": {},
-          "thumbnails": []
+          "label": "Color",
+          "placeholder": ""
         }
       },
       "description": {

@@ -77,6 +77,9 @@ export default async function Page({ params }) {
             <div className={styles.MemberInfo_Content}>
                 <div className={styles.taglist}>
                     <div className={styles.gen}>Generation {page.data.generation}</div>
+                    <div 
+                    className={styles.color} 
+                    style={{ '--member-color': page.data.color }}>{page.data.color}</div>
                 </div>
                 <div className={styles.MemberInfo_Description}>
                     <PrismicRichText field={page.data.description} />
