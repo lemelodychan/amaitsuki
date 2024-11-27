@@ -6,7 +6,8 @@ import styles from './page.module.scss';
 
 import Link from "next/link";
 import { PrismicRichText } from "@prismicio/react";
-import { PrismicNextImage } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+
 import { TbChevronLeft } from "react-icons/tb";
   
 export async function generateMetadata({ params }) {
@@ -14,8 +15,8 @@ export async function generateMetadata({ params }) {
   const page = await client.getByUID("member", params.uid);
 
   return {
-    title: page.data.meta_title || "Default Title",
-    description: page.data.meta_description || "Default Description",
+    title: page.data.meta_title,
+    description: page.data.meta_description,
   };
 }
 
@@ -30,61 +31,59 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
   const client = createClient();
-  let page;
-
-  try {
-    page = await client.getByUID("member", params.uid, {
-      fetchOptions: { cache: 'no-store' },
-    });
-    if (!page || !page.data) {
-      console.error(`No member found for UID: ${params.uid}`);
-      return { notFound: true }; // Render 404 if member not found
-    }
-  } catch (error) {
-    console.error("Error fetching member page:", error);
-    return { notFound: true };
-  }
-
-  const videos = await client.getAllByType("video", {
-    fetchOptions: { cache: 'no-store' },
-    orderings: [{ field: 'my.video.publication_date', direction: 'desc' }],
+  const page = await client.getByUID("member", params.uid, {
+    fetchOptions: {
+      cache: 'no-store',
+    },
   });
 
-  const relatedVideos = videos.filter((video) =>
-    Array.isArray(video.data.participants) &&
-    video.data.participants.some(
+  const videos = await client.getAllByType("video", {
+      fetchOptions: {
+          cache: 'no-store',
+          next: { tags: ['prismic', 'video'] },
+        },
+      orderings: [
+          {
+              field: 'my.video.publication_date',
+              direction: 'desc',
+          },
+      ],
+  });
+  const relatedVideos = videos.filter((video) => {
+    const participants = video.data.participants;
+    // Check if participants is valid and an array
+    if (!Array.isArray(participants)) {
+      console.error(`Skipping video ${video.id} due to invalid participants format.`);
+      return false;
+    }
+    // Filter videos based on the member UID
+    return participants.some(
       (participant) => participant.member?.uid === params.uid
-    )
-  );
+    );
+  });
 
   return (
     <div className={styles.main}>
       <div className={styles.container}>
         <Link href="/members">
-          <button>
-            <TbChevronLeft />
-            <span>Back</span>
-          </button>
+            <button>
+                <TbChevronLeft /><span>Back</span>
+            </button>
         </Link>
         <h1>{page.data.name}</h1>
         <div className={styles.MemberInfo}>
-          <PrismicNextImage field={page.data.profilepic} className={styles.MemberInfo_Image} />
-          <div className={styles.MemberInfo_Content}>
-            <div className={styles.taglist}>
-              <div className={styles.gen}>Generation {page.data.generation}</div>
-              {page.data.color && (
-                <div
-                  className={styles.color}
-                  style={{ '--member-color': page.data.color }}
-                >
-                  {page.data.color}
+            <PrismicNextImage field={page.data.profilepic} className={styles.MemberInfo_Image} />
+            <div className={styles.MemberInfo_Content}>
+                <div className={styles.taglist}>
+                    <div className={styles.gen}>Generation {page.data.generation}</div>
+                    <div 
+                    className={styles.color} 
+                    style={{ '--member-color': page.data.color }}>{page.data.color}</div>
                 </div>
-              )}
+                <div className={styles.MemberInfo_Description}>
+                    <PrismicRichText field={page.data.description} />
+                </div>
             </div>
-            <div className={styles.MemberInfo_Description}>
-              <PrismicRichText field={page.data.description} />
-            </div>
-          </div>
         </div>
         {relatedVideos.length > 0 && (
           <div>
