@@ -54,8 +54,8 @@ export const createClient = (config = {}) => {
     routes,
     fetchOptions:
       process.env.NODE_ENV === "production"
-        ? { next: { revalidate: 5 }, cache: "no-store" } // Fetch fresh data and allow ISR
-        : { next: { revalidate: 5 } }, // Development mode revalidates every 5 seconds
+        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
+        : { next: { revalidate: 5 } },
     ...config,
   });
 

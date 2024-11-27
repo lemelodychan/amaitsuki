@@ -32,6 +32,7 @@ export async function generateStaticParams() {
 export default async function Page({ params }) {
   const client = createClient();
   const page = await client.getByUID("member", params.uid, {
+    ref: client.masterRef,
     fetchOptions: {
       cache: 'no-store',
     },
