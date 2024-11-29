@@ -1,0 +1,93 @@
+@use "../styles/mixins" as mixins;
+.Video_Container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .Video {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 1920/1080 !important;
+        border-radius: 16px;
+        overflow: hidden;
+
+        iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1920/1080 !important;
+        }
+
+        .Thumbnail {
+            position: relative;
+            height: auto !important;
+            aspect-ratio: 1920 / 1080 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            overflow: hidden;
+        
+            background-image: linear-gradient(143deg, var(--at-purple), var(--at-peach), var(--at-purple));
+            background-size: 200% 100%;
+            background-position: center left;
+            transition: var(--transi);
+        
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                color: transparent;
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+                height: 100% !important;
+        
+                transition: var(--transi);
+                transform: scale(100%);
+            }
+        
+            &:hover {
+                background-position: center right;
+
+                img {
+                    transform: scale(106%);
+                }
+            }
+        
+            button {
+                position: relative;
+                z-index: 2;
+                background-color: white;
+                border: 0px;
+            }
+        }
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-family: var(--font-title);
+        font-style: normal;
+        text-transform: uppercase;
+        font-weight: 600;
+
+        @include mixins.md { 
+            gap: 8px;
+        }
+
+        .title {
+            font-size: 16px;
+            line-height: 32px;
+            letter-spacing: 2.4px;
+        }
+        .artist {
+            color: var(--midgrey);
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: 1.8px;
+        }
+    }
+
+}

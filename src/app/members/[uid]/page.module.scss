@@ -177,11 +177,10 @@
     .VideoGrid {
         display: grid;
         grid-template-columns: 1fr;
-        grid-gap: var(--spacing-m);
+        grid-gap: var(--spacing-xxl);
 
         @include mixins.md {
             grid-template-columns: 1fr 1fr;
-            grid-gap: var(--spacing-xl);
         }
 
         iframe {

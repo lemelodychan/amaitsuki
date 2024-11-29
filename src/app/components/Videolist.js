@@ -18,7 +18,7 @@ export default async function Videolist() {
         },
     ],
   });
-  const latestVideos = videos.slice(0, 4);
+  const latestVideos = videos.slice(0, 5);
 
 return (
   <section
@@ -28,13 +28,13 @@ return (
       {latestVideos.map((video) => (
         <div key={video.id} className={styles.Video_Card}>
           <div className={styles.Video}>
-              <YoutubeEmbed videoId={video.data.youtube_id} />
+              <YoutubeEmbed 
+                videoId={video.data.youtube_id} 
+                placeholderImage={video.data.image}
+                artistName={video.data.artist}
+                songName={video.data.title}
+              />
           </div>
-          <p className={styles.info}>
-            <span className={styles.title}>{video.data.title}</span>
-            <span className={styles.artist}>Originally by {video.data.artist}</span>
-          </p>
-          {/* <LikeButton uid={video.data.youtube_id} /> */}
         </div>
       ))}
     </div>

@@ -150,7 +150,13 @@ export default async function Page({ params }) {
             <h3>Participated in:</h3>
             <div className={styles.VideoGrid}>
               {relatedVideos.map((video) => (
-                <YoutubeEmbed key={video.id} videoId={video.data.youtube_id} />
+                <YoutubeEmbed 
+                    key={video.id}
+                    videoId={video.data.youtube_id} 
+                    placeholderImage={video.data.image}
+                    artistName={video.data.artist}
+                    songName={video.data.title}
+                />
               ))}
             </div>
           </div>
