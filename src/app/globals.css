@@ -1,6 +1,7 @@
 :root {
   --max-width: 1200px;
   --menu-height: 96px;
+  --minheight: calc(66vh - var(--menu-height));
 
   --logo-size-desktop: 64px;
   --logo-size-mobile: 48px;
