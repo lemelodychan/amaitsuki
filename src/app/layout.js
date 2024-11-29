@@ -3,6 +3,7 @@ import { repositoryName } from '@/prismicio';
 import './globals.css'
 
 import Menu from './components/Menu';
+import Footer from './components/Footer'
 
 export const metadata = {
   title: 'Amaitsuki | Idol Dance and Vocal Cover Group from France',
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
       <body>
         <Menu />
         {children}
+        <Footer />
       </body>
     </html>
   )
