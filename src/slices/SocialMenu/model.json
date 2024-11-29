@@ -1,0 +1,59 @@
+{
+  "id": "social_menu",
+  "type": "SharedSlice",
+  "name": "SocialMenu",
+  "description": "SocialMenu",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "youtube": {
+          "type": "Link",
+          "config": {
+            "label": "Youtube",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "twitter": {
+          "type": "Link",
+          "config": {
+            "label": "Twitter",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "instagram": {
+          "type": "Link",
+          "config": {
+            "label": "Instagram",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "tiktok": {
+          "type": "Link",
+          "config": {
+            "label": "Tiktok",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -8,5 +8,6 @@ export const components = {
   memberlist: dynamic(() => import("./Memberlist")),
   nav_left: dynamic(() => import("./NavLeft")),
   nav_right: dynamic(() => import("./NavRight")),
+  social_menu: dynamic(() => import("./SocialMenu")),
   video_list: dynamic(() => import("./VideoList")),
 };

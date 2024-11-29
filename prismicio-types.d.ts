@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type GlobalNavDocumentDataSlicesSlice =
+  | SocialMenuSlice
   | LogoSlice
   | NavRightSlice
   | NavLeftSlice;
@@ -844,6 +845,81 @@ export type NavRightSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *SocialMenu → Default → Primary*
+ */
+export interface SocialMenuSliceDefaultPrimary {
+  /**
+   * Youtube field in *SocialMenu → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_menu.default.primary.youtube
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  youtube: prismic.LinkField;
+
+  /**
+   * Twitter field in *SocialMenu → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_menu.default.primary.twitter
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  twitter: prismic.LinkField;
+
+  /**
+   * Instagram field in *SocialMenu → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_menu.default.primary.instagram
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  instagram: prismic.LinkField;
+
+  /**
+   * Tiktok field in *SocialMenu → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_menu.default.primary.tiktok
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  tiktok: prismic.LinkField;
+}
+
+/**
+ * Default variation for SocialMenu Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SocialMenuSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SocialMenuSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SocialMenu*
+ */
+type SocialMenuSliceVariation = SocialMenuSliceDefault;
+
+/**
+ * SocialMenu Shared Slice
+ *
+ * - **API ID**: `social_menu`
+ * - **Description**: SocialMenu
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SocialMenuSlice = prismic.SharedSlice<
+  "social_menu",
+  SocialMenuSliceVariation
+>;
+
+/**
  * Default variation for VideoList Slice
  *
  * - **API ID**: `default`
@@ -933,6 +1009,10 @@ declare module "@prismicio/client" {
       NavRightSliceDefaultItem,
       NavRightSliceVariation,
       NavRightSliceDefault,
+      SocialMenuSlice,
+      SocialMenuSliceDefaultPrimary,
+      SocialMenuSliceVariation,
+      SocialMenuSliceDefault,
       VideoListSlice,
       VideoListSliceVariation,
       VideoListSliceDefault,
