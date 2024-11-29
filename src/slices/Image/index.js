@@ -10,7 +10,7 @@ import styles from "./page.module.scss"
 const Image = ({ slice }) => {
   const imageWidth = slice.primary.is_fullwidth 
     ? "100%" 
-    : slice.primary.image_width || "auto";
+    : `${slice.primary.image_width || "auto"}${slice.primary.image_width ? "px" : ""}`;
 
 
   return (
