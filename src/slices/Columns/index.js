@@ -19,8 +19,8 @@ const Columns = ({ slice }) => {
       className={styles.Columns}
       style={{ '--columns': columnCount }}
     >
-      {slice.primary.column.map((item) => (
-        <div className={styles.column}>
+      {slice.primary.column.map((item, index) => (
+        <div className={styles.column} key={item.id || index}>
           <PrismicNextImage field={item.image} />
           <h3>{item.title}</h3>
           <div className={styles.text}>
