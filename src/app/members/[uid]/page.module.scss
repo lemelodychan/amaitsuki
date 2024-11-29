@@ -58,7 +58,7 @@
 
                 @include mixins.md {
                     background-image: linear-gradient(to right, transparent 33%, white);
-                    padding: var(--spacing-l);
+                    padding: var(--spacing-l) var(--spacing-xl);
                     padding-left: 0;
                     border-radius: var(--border-radius-l);
                 }
@@ -118,13 +118,17 @@
             }   
 
             .MemberInfo_Projects {
-                width: 50%;
                 font-weight: 500;
                 letter-spacing: 0.5px;
                 font-family: var(--font-title);
                 font-size: 14px;
                 padding: 16px 0 8px 0;
+                margin-bottom: 8px;
                 border-bottom: 1px solid #ededed;
+
+                @include mixins.md {
+                    width: 50%;
+                }
 
                 a {
                     text-transform: uppercase;
@@ -142,6 +146,7 @@
             .MemberInfo_SNS {
                 display: flex;
                 gap: 16px;
+                margin: 16px 0;
 
                 a {
                     display: flex;
