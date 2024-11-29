@@ -51,6 +51,7 @@
 html,
 body {
   max-width: 100vw;
+  height: 100vh;
   overflow-x: hidden;
   font: var(--font-1);
   color: var(--at-darkgrey);;

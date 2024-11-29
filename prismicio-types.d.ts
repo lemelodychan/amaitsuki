@@ -364,6 +364,7 @@ export type MemberDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<MemberDocumentData>, "member", Lang>;
 
 type PageDocumentDataSlicesSlice =
+  | AllVideosSlice
   | TextSlice
   | VideoSlice
   | ImageTextSlice
@@ -600,6 +601,36 @@ export type AllDocumentTypes =
   | MemberDocument
   | PageDocument
   | VideoDocument;
+
+/**
+ * Default variation for AllVideos Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AllVideosSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *AllVideos*
+ */
+type AllVideosSliceVariation = AllVideosSliceDefault;
+
+/**
+ * AllVideos Shared Slice
+ *
+ * - **API ID**: `all_videos`
+ * - **Description**: AllVideos
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AllVideosSlice = prismic.SharedSlice<
+  "all_videos",
+  AllVideosSliceVariation
+>;
 
 /**
  * Item in *Columns → Default → Primary → Column*
@@ -1337,6 +1368,9 @@ declare module "@prismicio/client" {
       VideoDocumentDataParticipantsItem,
       VideoDocumentDataSlicesSlice,
       AllDocumentTypes,
+      AllVideosSlice,
+      AllVideosSliceVariation,
+      AllVideosSliceDefault,
       ColumnsSlice,
       ColumnsSliceDefaultPrimaryColumnItem,
       ColumnsSliceDefaultPrimary,
