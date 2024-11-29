@@ -81,17 +81,44 @@ export default async function Page({ params }) {
                     style={{ '--member-color': page.data.color }}>{page.data.color}</div>
                 </div>
                 {page.data.projects?.some(
-                  (item) => item.is_neoriyon || item.is_tsukitabi || item.is_stormyshot
+                  (item) =>
+                    item.is_neoriyon ||
+                    item.is_tsukitabi ||
+                    item.is_stormyshot ||
+                    item.is_vocalaction
                 ) && (
                   <div className={styles.MemberInfo_Projects}>
                     <span>Also a member of </span>
-                    {page.data.projects.map((item, index) => (
-                      <span key={index}>
-                        {item.is_neoriyon && <Link href="https://www.youtube.com/@NEORiYON" target="_blank">NEORiYON</Link>}
-                        {item.is_tsukitabi && <Link href="https://www.youtube.com/@tsukitabi" target="_blank">Tsukitabi</Link>}
-                        {item.is_stormyshot && <Link href="https://www.youtube.com/@StormyShot" target="_blank">Stormy Shot</Link>}
-                      </span>
-                    ))}
+                    {page.data.projects.map((item, index) => {
+                      const memberships = [
+                        item.is_neoriyon && (
+                          <Link key="neoriyon" href="https://www.youtube.com/@NEORiYON" target="_blank">NEORiYON</Link>
+                        ),
+                        item.is_tsukitabi && (
+                          <Link key="tsukitabi" href="https://www.youtube.com/@tsukitabi" target="_blank">Tsukitabi</Link>
+                        ),
+                        item.is_stormyshot && (
+                          <Link key="stormyshot" href="https://www.youtube.com/@StormyShot" target="_blank">Stormy Shot</Link>
+                        ),
+                        item.is_vocalaction && (
+                          <Link key="vocalaction" href="https://www.youtube.com/@vocalaction" target="_blank">Vocalaction</Link>
+                        ),
+                      ].filter(Boolean);
+
+                      if (memberships.length > 0) {
+                        return (
+                          <span key={index}>
+                            {memberships.map((membership, i) => (
+                              <>
+                                {i > 0 && ", "}
+                                {membership}
+                              </>
+                            ))}
+                          </span>
+                        );
+                      }
+                      return null;
+                    })}
                   </div>
                 )}
                 <div className={styles.MemberInfo_Description}>

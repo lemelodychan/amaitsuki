@@ -199,6 +199,17 @@ export interface MemberDocumentDataProjectsItem {
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   is_stormyshot: prismic.BooleanField;
+
+  /**
+   * Is Vocalaction? field in *Member → Projects*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: member.projects[].is_vocalaction
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_vocalaction: prismic.BooleanField;
 }
 
 type MemberDocumentDataSlicesSlice = never;

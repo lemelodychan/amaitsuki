@@ -123,6 +123,15 @@
                 "placeholder_true": "true",
                 "default_value": false
               }
+            },
+            "is_vocalaction": {
+              "type": "Boolean",
+              "config": {
+                "label": "Is Vocalaction?",
+                "placeholder_false": "false",
+                "placeholder_true": "true",
+                "default_value": false
+              }
             }
           }
         }
