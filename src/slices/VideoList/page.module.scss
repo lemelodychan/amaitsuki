@@ -4,7 +4,9 @@
     max-width: 1200px;
     margin: 3rem auto 2rem auto;
     position: relative;
-    padding: 0 16px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
 
     @include mixins.md { 
       padding: 0 32px;
@@ -18,19 +20,41 @@
         background-image: url(../../app/assets/Shape2.svg);
         background-size: contain;
         position: absolute;
-        bottom: -50px;
+        bottom: 100px;
         left: -300px;
         z-index: 1;
+
+        @include mixins.md { 
+          bottom: -50px;
+        }
       }
+
+    > h3 {
+      order: 1;
+    }  
 
     a {
-      position: absolute;
+      position: relative;
       z-index: 2;
-      top: 0;
-      right: 16px;
+      order: 3;
+
+      button {
+        width: 100%;
+
+        @include mixins.md { 
+          width: fit-content;
+        }
+      }
 
       @include mixins.md { 
+        position: absolute;
+        top: 0;
         right: 32px;
       }
+    }
+
+    > section {
+      order: 2;
+      margin-bottom: 32px;
     }
 }
