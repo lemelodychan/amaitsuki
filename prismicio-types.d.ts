@@ -398,6 +398,17 @@ interface PageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<PageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
    * Meta Description field in *Page*
    *
    * - **Field Type**: Text
@@ -405,7 +416,7 @@ interface PageDocumentData {
    * - **API ID Path**: page.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
+   */
   meta_description: prismic.KeyTextField;
 
   /**
@@ -418,17 +429,6 @@ interface PageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   meta_image: prismic.ImageField<never>;
-
-  /**
-   * Meta Title field in *Page*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: page.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_title: prismic.KeyTextField;
 }
 
 /**
@@ -551,6 +551,17 @@ interface VideoDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<VideoDocumentDataSlicesSlice> /**
+   * Meta Title field in *Video*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: video.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
    * Meta Description field in *Video*
    *
    * - **Field Type**: Text
@@ -558,7 +569,7 @@ interface VideoDocumentData {
    * - **API ID Path**: video.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
+   */
   meta_description: prismic.KeyTextField;
 
   /**
@@ -571,17 +582,6 @@ interface VideoDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   meta_image: prismic.ImageField<never>;
-
-  /**
-   * Meta Title field in *Video*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: video.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_title: prismic.KeyTextField;
 }
 
 /**
