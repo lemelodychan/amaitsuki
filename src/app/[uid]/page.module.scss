@@ -10,7 +10,7 @@
     max-width: 1200px;
     margin: auto;
     position: relative;
-    min-height: calc(100vh) !important;
+    min-height: calc(100vh - var(--menu-height)) !important;
     height: auto!important;
 
     &:after {

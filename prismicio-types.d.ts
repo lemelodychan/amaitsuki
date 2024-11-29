@@ -364,6 +364,7 @@ export type MemberDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<MemberDocumentData>, "member", Lang>;
 
 type PageDocumentDataSlicesSlice =
+  | AnnouncementSlice
   | AllVideosSlice
   | TextSlice
   | VideoSlice
@@ -630,6 +631,62 @@ type AllVideosSliceVariation = AllVideosSliceDefault;
 export type AllVideosSlice = prismic.SharedSlice<
   "all_videos",
   AllVideosSliceVariation
+>;
+
+/**
+ * Primary content in *Announcement → Default → Primary*
+ */
+export interface AnnouncementSliceDefaultPrimary {
+  /**
+   * Sentiment field in *Announcement → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Info
+   * - **API ID Path**: announcement.default.primary.sentiment
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  sentiment: prismic.SelectField<"Info" | "Warning" | "Success", "filled">;
+
+  /**
+   * Text field in *Announcement → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: announcement.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Announcement Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnnouncementSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AnnouncementSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Announcement*
+ */
+type AnnouncementSliceVariation = AnnouncementSliceDefault;
+
+/**
+ * Announcement Shared Slice
+ *
+ * - **API ID**: `announcement`
+ * - **Description**: Announcement
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnnouncementSlice = prismic.SharedSlice<
+  "announcement",
+  AnnouncementSliceVariation
 >;
 
 /**
@@ -1371,6 +1428,10 @@ declare module "@prismicio/client" {
       AllVideosSlice,
       AllVideosSliceVariation,
       AllVideosSliceDefault,
+      AnnouncementSlice,
+      AnnouncementSliceDefaultPrimary,
+      AnnouncementSliceVariation,
+      AnnouncementSliceDefault,
       ColumnsSlice,
       ColumnsSliceDefaultPrimaryColumnItem,
       ColumnsSliceDefaultPrimary,

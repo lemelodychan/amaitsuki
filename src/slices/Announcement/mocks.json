@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Qui exercitation irure elit magna consequat irure. Tempor tempor exercitation eu cillum ut enim enim anim eiusmod et sit dolore occaecat ullamco. Deserunt occaecat laborum eu occaecat adipisicing in est sint."
+						}
+					}
+				]
+			},
+			"sentiment": {
+				"__TYPE__": "FieldContent",
+				"value": "Info",
+				"type": "Select"
+			}
+		},
+		"items": []
+	}
+]

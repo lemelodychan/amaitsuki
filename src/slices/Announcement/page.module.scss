@@ -1,0 +1,35 @@
+@use "../../app/styles/mixins" as mixins;
+
+.announcement {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: 16px auto;
+    grid-gap: 16px;
+    align-items: center;
+    padding: 12px 20px 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+
+    &.info {
+        background-color: #E3F2FD;
+        color: #0D47A1;
+    }
+    &.warning {
+        background-color: #FFEBEE;
+        color: #B71C1C;
+    }
+    &.success {
+        background-color: #F1F8E9;
+        color: #33691E;
+    }
+
+    .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 24px;
+        font-size: 16px;
+    }
+}

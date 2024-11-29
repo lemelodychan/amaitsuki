@@ -1,0 +1,52 @@
+@use "../../app/styles/mixins" as mixins;
+
+.TextBlock {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 24px 0;
+    position: relative;
+    z-index: 2;
+
+    h3 {
+        margin: 0;
+
+        &:empty{
+            display: none;
+        }
+    }
+
+    .text {
+        margin-bottom: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    a {
+        display: inline-flex;
+        width: fit-content;
+        gap: var(--spacing-m);
+        padding: var(--spacing-m) calc(var(--spacing-m) + var(--spacing-s));
+        justify-content: center;
+        align-items: center;
+        border-radius: var(--border-radius-m);
+        font-family: var(--font-title);
+        
+        background-image: linear-gradient(136deg, #BD96FD -6%, #F4C7C2 53%, #BD96FD 106%);
+        background-size: 200% 100%;
+        background-position: center left;
+
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1px;
+        transition: var(--transi);
+
+        &:hover {
+            background-position: center right;
+        }
+    }
+}

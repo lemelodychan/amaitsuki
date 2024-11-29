@@ -42,6 +42,20 @@
   background: rgba(var(--at-purple-rgb),0.5);
 }
 
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 9px;
+}
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(to bottom, var(--at-purple), var(--at-peach));
+  border: 3px white solid;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: #ededed;
+  border: 4px white solid;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
