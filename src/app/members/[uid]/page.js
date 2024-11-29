@@ -51,6 +51,7 @@ export default async function Page({ params }) {
           },
       ],
   });
+
   const relatedVideos = videos.filter((video) => {
     const participants = video.data.participants;
     if (!Array.isArray(participants)) {
@@ -79,19 +80,20 @@ export default async function Page({ params }) {
                     className={styles.color} 
                     style={{ '--member-color': page.data.color }}>{page.data.color}</div>
                 </div>
-                {page.data.projects.map((item, index) => (
-                    <div key={index} className={styles.MemberInfo_Projects}>
-                      {item.is_neoriyon === true (
-                        <span>NEORiYON</span>
-                      )}
-                      {item.is_tsukitabi === true (
-                        <span>Tsukitabi</span>
-                      )}
-                      {item.is_stormyshot === true (
-                        <span>StormyShot</span>
-                      )}
-                    </div>
-                ))}
+                {page.data.projects?.some(
+                  (item) => item.is_neoriyon || item.is_tsukitabi || item.is_stormyshot
+                ) && (
+                  <div className={styles.MemberInfo_Projects}>
+                    <span>Also a member of </span>
+                    {page.data.projects.map((item, index) => (
+                      <span key={index}>
+                        {item.is_neoriyon && <Link href="https://www.youtube.com/@NEORiYON" target="_blank">NEORiYON</Link>}
+                        {item.is_tsukitabi && <Link href="https://www.youtube.com/@tsukitabi" target="_blank">Tsukitabi</Link>}
+                        {item.is_stormyshot && <Link href="https://www.youtube.com/@StormyShot" target="_blank">Stormy Shot</Link>}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 <div className={styles.MemberInfo_Description}>
                     <PrismicRichText field={page.data.description} />
                 </div>
