@@ -9,6 +9,7 @@ import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
 import { TbChevronLeft } from "react-icons/tb";
+import { FaXTwitter, FaInstagram, FaTiktok } from "react-icons/fa6";
   
 export async function generateMetadata({ params }) {
   const client = createClient();
@@ -52,12 +53,9 @@ export default async function Page({ params }) {
   });
   const relatedVideos = videos.filter((video) => {
     const participants = video.data.participants;
-    // Check if participants is valid and an array
     if (!Array.isArray(participants)) {
-      console.error(`Skipping video ${video.id} due to invalid participants format.`);
       return false;
     }
-    // Filter videos based on the member UID
     return participants.some(
       (participant) => participant.member?.uid === params.uid
     );
@@ -84,6 +82,25 @@ export default async function Page({ params }) {
                 <div className={styles.MemberInfo_Description}>
                     <PrismicRichText field={page.data.description} />
                 </div>
+                {page.data.sns.map((item, index) => (
+                    <div key={index} className={styles.MemberInfo_SNS}>
+                      {item.twitter && item.twitter.url && (
+                        <PrismicNextLink field={item.twitter} target="_blank">
+                          <FaXTwitter />
+                        </PrismicNextLink>
+                      )}
+                      {item.instagram && item.instagram.url && (
+                        <PrismicNextLink field={item.instagram} target="_blank">
+                          <FaInstagram />
+                        </PrismicNextLink>
+                      )}
+                      {item.tiktok && item.tiktok.url && (
+                        <PrismicNextLink field={item.tiktok} target="_blank">
+                          <FaTiktok />
+                        </PrismicNextLink>
+                      )}
+                    </div>
+                ))}
             </div>
         </div>
         {relatedVideos.length > 0 && (
