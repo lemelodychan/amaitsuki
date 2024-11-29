@@ -27,6 +27,10 @@
 
   .content {
     width: 100%;
+
+    > section[data-slice-type="hero"] {
+      padding: 0;
+    }
   }
 
 }
