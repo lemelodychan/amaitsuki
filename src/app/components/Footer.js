@@ -1,8 +1,10 @@
 import { PrismicLink, PrismicText } from '@prismicio/react'
+import Link from 'next/link';
 import Image from 'next/image';
 import { createClient } from "@/prismicio";
 
 import styles from './Footer.module.scss';
+import { FaYoutube, FaXTwitter, FaInstagram, FaTiktok } from "react-icons/fa6";
 
 export default async function Footer() {
     const client = createClient();
@@ -15,10 +17,23 @@ export default async function Footer() {
                 </svg>
             </div>
             <div className={styles.FooterContainer}>
-                <div className={styles.Social}>Social Menu</div>
+                <div className={styles.Social}>
+                    <Link href="https://www.youtube.com/@amaitsukiland" target="_blank">
+                        <FaYoutube />
+                    </Link>
+                    <Link href="https://x.com/amaitsukiland" target="_blank">
+                        <FaXTwitter />
+                    </Link>
+                    <Link href="https://www.instagram.com/amaitsukiland" target="_blank">
+                        <FaInstagram />
+                    </Link>
+                    <Link href="https://www.tiktok.com/@amaitsukiland" target="_blank">
+                        <FaTiktok />
+                    </Link>
+                </div>
                 <Image 
                     className={styles.Logo} 
-                    src="../assets/Logo_white.svg"
+                    src="/Logo_white.svg"
                     width={70}
                     height={64}
                 />

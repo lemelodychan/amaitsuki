@@ -1,16 +1,76 @@
+@use "../styles/mixins" as mixins;
+
 .Footer {
+    --wave-height: 88px;
+    margin-top: 24px;
+    display: grid;
+    grid-template-rows: var(--wave-height) auto;
+
+    @include mixins.md { 
+        --wave-height: 164px;
+    }
+
     .FooterWave {
         width: 100%;
-        height: 164px;
+        height: var(--wave-height);
         overflow: hidden;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+
+        svg {
+            width: 100%;
+            height: auto;
+        }
     }
     .FooterContainer {
         background-color: var(--at-purple);
         color: white;
-        padding: 16px 32px;
+        padding: 16px 32px 112px 32px;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        align-items: center;
+        gap: 32px;
         text-align: center;
+
+        @include mixins.md { 
+            padding: 16px 32px 64px 32px;
+        }
+
+        .Social {
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            padding: 16px 0;
+
+            a {
+                font-size: 24px;
+                transform: scale(100%) rotate(0deg);
+                transition: var(--transi);
+
+                &:nth-child(even):hover {
+                    transform: scale(110%) rotate(4deg);
+                }
+                &:nth-child(odd):hover {
+                    transform: scale(110%) rotate(-4deg);
+                }
+            }
+        }
+
+        .Credits {
+            max-width: 440px;
+            font-family: var(--font-title);
+            font-size: 12px;
+            letter-spacing: 1px;
+            line-height: 21px;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-style: normal;
+
+            a {
+                border-bottom: 1px solid;
+                padding-bottom: 3px;
+            }
+        }
     }
 }
