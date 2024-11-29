@@ -15,6 +15,7 @@ export const components = {
   nav_right: dynamic(() => import("./NavRight")),
   social_menu: dynamic(() => import("./SocialMenu")),
   text: dynamic(() => import("./Text")),
+  title: dynamic(() => import("./Title")),
   video: dynamic(() => import("./Video")),
   video_list: dynamic(() => import("./VideoList")),
 };

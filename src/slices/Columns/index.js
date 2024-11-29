@@ -13,28 +13,31 @@ const Columns = ({ slice }) => {
   const columnCount = slice.primary.column.length;
 
   return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-      className={styles.Columns}
-      style={{ '--columns': columnCount }}
-    >
-      {slice.primary.column.map((item, index) => (
-        <div className={styles.column} key={item.id || index}>
-          <PrismicNextImage field={item.image} />
-          <h3>{item.title}</h3>
-          <div className={styles.text}>
-            <PrismicRichText field={item.text} />
+    <>
+      <h2>{slice.primary.title}</h2>
+      <section
+        data-slice-type={slice.slice_type}
+        data-slice-variation={slice.variation}
+        className={styles.Columns}
+        style={{ '--columns': columnCount }}
+      >
+        {slice.primary.column.map((item, index) => (
+          <div className={styles.column} key={item.id || index}>
+            <PrismicNextImage field={item.image} />
+            <h3>{item.title}</h3>
+            <div className={styles.text}>
+              <PrismicRichText field={item.text} />
+            </div>
+            {item.link?.url && (
+              <PrismicNextLink field={item.link} className={styles.link}>
+                <span>{item.link_label || "Learn more"}</span>
+                <TbArrowRight />
+              </PrismicNextLink>
+            )}
           </div>
-          {item.link?.url && (
-            <PrismicNextLink field={item.link} className={styles.link}>
-              <span>{item.link_label || "Learn more"}</span>
-              <TbArrowRight />
-            </PrismicNextLink>
-          )}
-        </div>
-      ))}
-    </section>
+        ))}
+      </section>
+    </>
   );
 };
 

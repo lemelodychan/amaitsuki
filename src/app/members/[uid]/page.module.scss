@@ -58,6 +58,7 @@
 
                 @include mixins.md {
                     background-image: linear-gradient(to right, transparent 33%, white);
+                    backdrop-filter: blur(2px);
                     padding: var(--spacing-l) var(--spacing-xl);
                     padding-left: 0;
                     border-radius: var(--border-radius-l);

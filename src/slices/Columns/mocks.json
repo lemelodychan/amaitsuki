@@ -71,6 +71,11 @@
 						]
 					}
 				]
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "setting",
+				"type": "Text"
 			}
 		},
 		"items": []

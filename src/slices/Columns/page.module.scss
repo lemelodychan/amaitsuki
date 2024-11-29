@@ -3,20 +3,26 @@
 .Columns {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 48px;
+    grid-gap: 32px;
+    margin-bottom: 32px;
     position: relative;
     z-index: 2;
 
     @include mixins.md {
         grid-template-columns: repeat(var(--columns), 1fr);
         grid-gap: 64px;
+        margin-bottom: 64px;
     }
 
     .column{
         width: auto;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 8px;
+
+        @include mixins.md {
+            gap: 16px;
+        }
 
         h3 {
             margin: 0;
@@ -34,6 +40,14 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
+            padding: 16px 16px 16px 0px;
+            background-color: rgba(255,255,255,0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 16px;
+
+            @include mixins.md {
+                padding: 16px;
+            }
         }
 
         a {
@@ -41,6 +55,8 @@
             width: fit-content;
             gap: var(--spacing-m);
             padding: var(--spacing-m) calc(var(--spacing-m) + var(--spacing-s));
+            margin-bottom: 24px;
+
             justify-content: center;
             align-items: center;
             border-radius: var(--border-radius-m);

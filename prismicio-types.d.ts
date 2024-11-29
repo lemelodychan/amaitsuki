@@ -739,6 +739,16 @@ export interface ColumnsSliceDefaultPrimaryColumnItem {
  */
 export interface ColumnsSliceDefaultPrimary {
   /**
+   * Title field in *Columns → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: columns.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
    * Column field in *Columns → Default → Primary*
    *
    * - **Field Type**: Group
@@ -1314,6 +1324,33 @@ type TextSliceVariation = TextSliceDefault;
 export type TextSlice = prismic.SharedSlice<"text", TextSliceVariation>;
 
 /**
+ * Default variation for Title Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TitleSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *Title*
+ */
+type TitleSliceVariation = TitleSliceDefault;
+
+/**
+ * Title Shared Slice
+ *
+ * - **API ID**: `title`
+ * - **Description**: Title
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TitleSlice = prismic.SharedSlice<"title", TitleSliceVariation>;
+
+/**
  * Primary content in *Video → Default → Primary*
  */
 export interface VideoSliceDefaultPrimary {
@@ -1473,6 +1510,9 @@ declare module "@prismicio/client" {
       TextSliceDefaultPrimary,
       TextSliceVariation,
       TextSliceDefault,
+      TitleSlice,
+      TitleSliceVariation,
+      TitleSliceDefault,
       VideoSlice,
       VideoSliceDefaultPrimary,
       VideoSliceVariation,
