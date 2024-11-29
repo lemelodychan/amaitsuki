@@ -1,18 +1,12 @@
 @use "../styles/mixins" as mixins;
 
 .Footer {
-    --wave-height: 88px;
-    margin-top: 24px;
     display: grid;
-    grid-template-rows: var(--wave-height) auto;
-
-    @include mixins.md { 
-        --wave-height: 164px;
-    }
+    grid-template-rows: auto auto;
 
     .FooterWave {
         width: 100%;
-        height: var(--wave-height);
+        height: auto;
         overflow: hidden;
         display: flex;
         align-items: start;
@@ -24,18 +18,15 @@
         }
     }
     .FooterContainer {
+        margin-top: -1px;
         background-color: var(--at-purple);
         color: white;
-        padding: 16px 32px 112px 32px;
+        padding: 48px 32px 64px 32px;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 32px;
         text-align: center;
-
-        @include mixins.md { 
-            padding: 16px 32px 64px 32px;
-        }
 
         .Social {
             display: flex;
