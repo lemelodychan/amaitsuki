@@ -79,6 +79,19 @@ export default async function Page({ params }) {
                     className={styles.color} 
                     style={{ '--member-color': page.data.color }}>{page.data.color}</div>
                 </div>
+                {page.data.projects.map((item, index) => (
+                    <div key={index} className={styles.MemberInfo_Projects}>
+                      {item.is_neoriyon === true (
+                        <span>NEORiYON</span>
+                      )}
+                      {item.is_tsukitabi === true (
+                        <span>Tsukitabi</span>
+                      )}
+                      {item.is_stormyshot === true (
+                        <span>StormyShot</span>
+                      )}
+                    </div>
+                ))}
                 <div className={styles.MemberInfo_Description}>
                     <PrismicRichText field={page.data.description} />
                 </div>

@@ -163,6 +163,44 @@ export interface MemberDocumentDataSnsItem {
   tiktok: prismic.LinkField;
 }
 
+/**
+ * Item in *Member → Projects*
+ */
+export interface MemberDocumentDataProjectsItem {
+  /**
+   * Is NEORiYON? field in *Member → Projects*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: member.projects[].is_neoriyon
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_neoriyon: prismic.BooleanField;
+
+  /**
+   * Is Tsukitabi? field in *Member → Projects*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: member.projects[].is_tsukitabi
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_tsukitabi: prismic.BooleanField;
+
+  /**
+   * Is StormyShot? field in *Member → Projects*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: member.projects[].is_stormyshot
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_stormyshot: prismic.BooleanField;
+}
+
 type MemberDocumentDataSlicesSlice = never;
 
 /**
@@ -246,6 +284,17 @@ interface MemberDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   sns: prismic.GroupField<Simplify<MemberDocumentDataSnsItem>>;
+
+  /**
+   * Projects field in *Member*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: member.projects[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  projects: prismic.GroupField<Simplify<MemberDocumentDataProjectsItem>>;
 
   /**
    * Slice Zone field in *Member*
@@ -843,6 +892,7 @@ declare module "@prismicio/client" {
       MemberDocument,
       MemberDocumentData,
       MemberDocumentDataSnsItem,
+      MemberDocumentDataProjectsItem,
       MemberDocumentDataSlicesSlice,
       PageDocument,
       PageDocumentData,
