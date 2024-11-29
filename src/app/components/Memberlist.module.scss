@@ -72,6 +72,8 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            position: relative;
+            z-index: 2;
 
             @include mixins.md { 
                 gap: 16px;
@@ -122,4 +124,34 @@
 
         }
     }
+
+    &:before {
+        display: block;
+        width: 665px;
+        height: 577px;
+        content: " ";
+        background-image: url(../assets/Shape1.svg);
+        background-size: contain;
+        position: absolute;
+        top: 50px;
+        right: -400px;
+        z-index: 1;
+    }
+    &:first-of-type::before {
+        display: none;
+    }
+
+    &:after {
+        display: block;
+        width: 665px;
+        height: 577px;
+        content: " ";
+        background-image: url(../assets/Shape2.svg);
+        background-size: contain;
+        position: absolute;
+        bottom: -50px;
+        left: -300px;
+        z-index: 1;
+    }
+
 }

@@ -5,4 +5,17 @@
     margin: 3rem auto 2rem auto;
     position: relative;
     padding: 0 32px;
+
+    &:after {
+        display: block;
+        width: 665px;
+        height: 577px;
+        content: " ";
+        background-image: url(../../app/assets/Shape2.svg);
+        background-size: contain;
+        position: absolute;
+        bottom: -50px;
+        left: -300px;
+        z-index: 1;
+      }
 }

@@ -3,11 +3,16 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  columns: dynamic(() => import("./Columns")),
   hero: dynamic(() => import("./Hero")),
+  image: dynamic(() => import("./Image")),
+  image_text: dynamic(() => import("./ImageText")),
   logo: dynamic(() => import("./Logo")),
   memberlist: dynamic(() => import("./Memberlist")),
   nav_left: dynamic(() => import("./NavLeft")),
   nav_right: dynamic(() => import("./NavRight")),
   social_menu: dynamic(() => import("./SocialMenu")),
+  text: dynamic(() => import("./Text")),
+  video: dynamic(() => import("./Video")),
   video_list: dynamic(() => import("./VideoList")),
 };

@@ -26,6 +26,21 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "text": {
+              "type": "SharedSlice"
+            },
+            "video": {
+              "type": "SharedSlice"
+            },
+            "image_text": {
+              "type": "SharedSlice"
+            },
+            "columns": {
+              "type": "SharedSlice"
+            },
+            "image": {
+              "type": "SharedSlice"
+            },
             "memberlist": {
               "type": "SharedSlice"
             }
