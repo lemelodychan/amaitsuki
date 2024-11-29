@@ -3,6 +3,8 @@
 .Footer {
     display: grid;
     grid-template-rows: auto auto;
+    position: relative;
+    z-index: 2;
 
     .FooterWave {
         width: 100%;
