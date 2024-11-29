@@ -7,6 +7,8 @@
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
 
+import { TbArrowRight } from "react-icons/tb";
+
 import styles from "./page.module.scss"
 
 const Text = ({ slice }) => {
