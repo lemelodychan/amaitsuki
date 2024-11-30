@@ -3,24 +3,22 @@
  * @typedef {import("@prismicio/react").SliceComponentProps<HeroSlice>} HeroProps
  * @param {HeroProps}
  */
-import styles from './page.module.scss'
+import React from "react";
+import Carousel from "../../app/components/Carousel";
+import styles from "./page.module.scss";
 
-import { PrismicNextImage } from "@prismicio/next";
+const HeroSlice = ({ slice }) => {
+  const images = slice.primary.images;
 
-const Hero = ({ slice }) => {
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className={styles.HeroContainer}
+      className={styles.Hero}
     >
-      <PrismicNextImage 
-        className={styles.Hero}
-        field={slice.primary.image}
-        imgixParams={{ auto: false }}
-      />
+      <Carousel images={images} />
     </section>
   );
 };
 
-export default Hero;
+export default HeroSlice;

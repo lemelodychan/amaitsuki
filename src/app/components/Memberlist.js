@@ -62,7 +62,10 @@ export default async function Memberlist() {
           {hiatusMembers.map((member) => (
             <PrismicNextLink key={member.id} data-type={member.data.status} className={styles.Member_Card} href={`/members/${sanitizeTitle(member.data.name)}`}>
               <div className={styles.Member_Image}>
-                <PrismicNextImage field={member.data.profilepic} />
+                <PrismicNextImage 
+                  field={member.data.profilepic}
+                  alt="Member profile picture"
+                />
               </div>
               <p className={styles.info}>
                 <span className={styles.name}>{member.data.name}</span>

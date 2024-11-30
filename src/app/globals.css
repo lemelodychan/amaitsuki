@@ -139,6 +139,15 @@ h3 {
   margin: var(--spacing-m) 0 var(--spacing-xl) 0;
 }
 
+.swiper-pagination-bullet {
+  background-color: transparent !important;
+  border: 1px solid white;
+  opacity: 1 !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: white !important;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

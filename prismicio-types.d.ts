@@ -790,18 +790,33 @@ export type ColumnsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Hero → Default → Primary → Images*
+ */
+export interface HeroSliceDefaultPrimaryImagesItem {
+  /**
+   * Image field in *Hero → Default → Primary → Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
   /**
-   * Image field in *Hero → Default → Primary*
+   * Images field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **API ID Path**: hero.default.primary.images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  image: prismic.ImageField<never>;
+  images: prismic.GroupField<Simplify<HeroSliceDefaultPrimaryImagesItem>>;
 }
 
 /**
@@ -1475,6 +1490,7 @@ declare module "@prismicio/client" {
       ColumnsSliceVariation,
       ColumnsSliceDefault,
       HeroSlice,
+      HeroSliceDefaultPrimaryImagesItem,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,

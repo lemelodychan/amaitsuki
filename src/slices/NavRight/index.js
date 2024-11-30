@@ -11,10 +11,13 @@ const NavRight = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      {slice.items.map((item) => (
-        <PrismicNextLink field={item.link} key={item.id}>
-          <>{item.name}</>
-        </PrismicNextLink>
+      {slice.items.map((item, index) => (
+         <PrismicNextLink 
+            field={item.link} 
+            key={item.id || `nav-item-${index}`}
+          >
+            {item.name}
+          </PrismicNextLink>
       ))}
     </section>
   );

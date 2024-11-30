@@ -23,7 +23,9 @@ const Columns = ({ slice }) => {
       >
         {slice.primary.column.map((item, index) => (
           <div className={styles.column} key={item.id || index}>
-            <PrismicNextImage field={item.image} />
+            <PrismicNextImage 
+              field={item.image}
+            />
             <h3>{item.title}</h3>
             <div className={styles.text}>
               <PrismicRichText field={item.text} />

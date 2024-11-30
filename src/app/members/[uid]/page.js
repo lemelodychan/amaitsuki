@@ -72,7 +72,11 @@ export default async function Page({ params }) {
         </Link>
         <h1>{page.data.name}</h1>
         <div className={styles.MemberInfo}>
-            <PrismicNextImage field={page.data.profilepic} className={styles.MemberInfo_Image} />
+            <PrismicNextImage 
+              field={page.data.profilepic} 
+              alt="Member profile picture"
+              className={styles.MemberInfo_Image}
+            />
             <div className={styles.MemberInfo_Content}>
                 <div className={styles.taglist}>
                     <div className={styles.gen}>Generation {page.data.generation}</div>
