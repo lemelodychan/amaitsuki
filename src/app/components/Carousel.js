@@ -17,12 +17,12 @@ const Carousel = ({ images }) => {
 
   return (
     <Swiper
-      modules={[Pagination, EffectFade]}
+      modules={[Pagination, EffectFade, Autoplay]}
       effect="fade"
       pagination={{ clickable: true }}
       loop={true}
       autoplay={{
-        delay: 3000,
+        delay: 5000,
         disableOnInteraction: false,
       }}
       className={styles.Carousel}
