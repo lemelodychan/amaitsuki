@@ -17,7 +17,6 @@ const YoutubeEmbed = ({ videoId, placeholderImage, artistName, songName }) => {
             {placeholderImage && placeholderImage.url && (
               <PrismicNextImage 
                 field={placeholderImage} 
-                alt="Video thumbnail"
                 style={{ width: "100%", height: "auto" }}
               />
             )}

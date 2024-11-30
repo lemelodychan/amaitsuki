@@ -64,7 +64,6 @@ export default async function Memberlist() {
               <div className={styles.Member_Image}>
                 <PrismicNextImage 
                   field={member.data.profilepic}
-                  alt="Member profile picture"
                 />
               </div>
               <p className={styles.info}>
