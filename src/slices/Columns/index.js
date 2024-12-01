@@ -3,7 +3,6 @@
  * @typedef {import("@prismicio/react").SliceComponentProps<ColumnsSlice>} ColumnsProps
  * @param {ColumnsProps}
  */
-import { useMemo } from "react"; // Don't forget to import useMemo
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import * as TablerIcons from "tabler-icons-react";
@@ -24,13 +23,9 @@ const Columns = ({ slice }) => {
       >
         {slice.primary.column.map((item, index) => {
 
-          // Define the Icon inside the map function for each item
-          const Icon = useMemo(() => {
-            if (item.link_icon && TablerIcons[item.link_icon]) {
-              return TablerIcons[item.link_icon];
-            }
-            return null;
-          }, [item.link_icon]);
+          const Icon = item.link_icon && TablerIcons[item.link_icon]
+              ? TablerIcons[item.link_icon]
+              : null;
 
           return (
             <div className={styles.column} key={item.id || index}>

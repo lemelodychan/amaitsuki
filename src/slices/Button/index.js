@@ -19,7 +19,7 @@ const Button = ({ slice }) => {
       <PrismicNextLink field={link} className={`${styles.button} ${buttonClass}`}>
         {Icon && <Icon size={16} className={styles.icon} />}
         <span>{link.text || "Learn more"}</span>
-        {show_trailing_icon && <TbArrowRight size={16} className={styles.arrowIcon} />}
+        {show_trailing_icon && <ArrowRight size={16} className={styles.arrowIcon} />}
       </PrismicNextLink>
     </div>
   );
