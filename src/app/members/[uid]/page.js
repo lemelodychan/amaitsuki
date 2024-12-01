@@ -1,6 +1,8 @@
 import { createClient } from "@/prismicio";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
+import ColorAccessibility from "@/app/components/ColorCheck";
+
 import YoutubeEmbed from "@/app/components/YoutubeEmbed";
 import styles from './page.module.scss';
 
@@ -83,9 +85,9 @@ export default async function Page({ params }) {
             <div className={styles.MemberInfo_Content}>
                 <div className={styles.taglist}>
                     <div className={styles.gen}>Generation {page.data.generation}</div>
-                    <div 
-                    className={styles.color} 
-                    style={{ '--member-color': page.data.color }}>{page.data.color}</div>
+
+                    <ColorAccessibility color={page.data.color} />
+
                     {page.data.mbti && (
                       <div className={styles.mbti}>{page.data.mbti}</div>
                     )}
