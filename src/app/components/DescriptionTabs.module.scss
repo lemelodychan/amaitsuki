@@ -1,0 +1,61 @@
+@use "../styles/mixins" as mixins;
+
+.DescriptionTabs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 0;
+
+    @include mixins.md {
+        flex-direction: row;
+        gap: 24px;
+    }
+
+    .tabHeaders {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-items: center;
+      justify-content: center;
+
+      @include mixins.md {
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+  
+      button {
+        width: 44px;
+        height: 44px;
+        background: none;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 0;
+        border-bottom: 1px solid #ffffffff;
+
+        @include mixins.md {
+            border-bottom: 0px solid #ffffffff;
+            border-right: 1px solid #ffffffff;
+        }
+  
+        &.active {
+            color: var(--at-peach);
+            border-bottom: 1px solid var(--at-peach);
+
+            @include mixins.md {
+                border-bottom: 0px solid var(--at-peach);
+                border-right: 1px solid var(--at-peach);
+            }
+        }
+      }
+    }
+  
+    .tabContent {
+      .tabPane {
+        display: block;
+      }
+    }
+  }
+  

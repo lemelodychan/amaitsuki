@@ -3,6 +3,7 @@ import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
 import ColorAccessibility from "@/app/components/ColorCheck";
 
+import DescriptionTabs from "@/app/components/DescriptionTabs";
 import YoutubeEmbed from "@/app/components/YoutubeEmbed";
 import styles from './page.module.scss';
 
@@ -133,9 +134,15 @@ export default async function Page({ params }) {
                     })}
                   </div>
                 )}
+                
                 <div className={styles.MemberInfo_Description}>
-                    <PrismicRichText field={page.data.description} />
+                  <DescriptionTabs
+                    description={page.data.description}
+                    descriptionFr={page.data.description_fr}
+                    descriptionJp={page.data.description_jp}
+                  />
                 </div>
+
                 {page.data.sns.map((item, index) => (
                     <div key={index} className={styles.MemberInfo_SNS}>
                       {item.twitter && item.twitter.url && (

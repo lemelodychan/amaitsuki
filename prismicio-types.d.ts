@@ -298,6 +298,28 @@ interface MemberDocumentData {
   description: prismic.RichTextField;
 
   /**
+   * Description (FR) field in *Member*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: member.description_fr
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description_fr: prismic.RichTextField;
+
+  /**
+   * Description (JP) field in *Member*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: member.description_jp
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description_jp: prismic.RichTextField;
+
+  /**
    * SNS field in *Member*
    *
    * - **Field Type**: Group
