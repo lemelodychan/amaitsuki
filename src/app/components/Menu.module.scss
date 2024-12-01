@@ -1,4 +1,55 @@
 @use "../styles/mixins" as mixins;
+@use "../styles/variables" as *;
+
+.menuContent {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    a {
+        transition: var(--transi);
+        font-family: var(--font-title);
+        color: white;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 2.5px;
+        display: inline-block;
+        position: relative;
+
+        @include mixins.md {
+            color: var(--at-darkgrey);
+        }
+
+        &:after {
+            transition: var(--transi);
+            display: block;
+            width: 12px;
+            height: 12px;
+            content: " ";
+            background-image: url(../assets/Etoiles.svg);
+            background-size: cover;
+            transform: scale(0);
+            transform-origin: center;
+            position: absolute;
+            top: -16px;
+            left: calc((100% - 12px)/2);
+        }
+
+        &:hover {
+            color: var(--at-purple);
+
+            &:after {
+                transform: scale(1);
+            }
+        }
+    }
+
+    &.menuLeft {
+        justify-content: flex-end;
+    }
+}
 
 .Menu {
     width: 100%;
@@ -11,13 +62,12 @@
 
     display: grid;
     grid-template-columns: 1fr var(--logo-size-mobile) 1fr;
+    grid-gap: 32px;
+    align-items: center;
 
     @include mixins.md {
         grid-template-columns: 1fr var(--logo-size-desktop) 1fr;
     }
-
-    grid-gap: 32px;
-    align-items: center;
 
     > a {
 
@@ -31,91 +81,4 @@
         }
     }
 
-    section[data-slice-type="nav_left"],
-    section[data-slice-type="nav_right"] {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        gap: 32px;
-
-        a {
-            transition: var(--transi);
-            font-family: var(--font-title);
-            color: var(--at-darkgrey);
-            text-transform: uppercase;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 2.5px;
-            display: inline-block;
-            position: relative;
-    
-            &:after {
-                transition: var(--transi);
-                display: block;
-                width: 12px;
-                height: 12px;
-                content: " ";
-                background-image: url(../assets/Etoiles.svg);
-                background-size: cover;
-                transform: scale(0);
-                transform-origin: center;
-                position: absolute;
-                top: -16px;
-                left: calc((100% - 12px)/2);
-            }
-
-            &:hover {
-                color: var(--at-purple);
-
-                &:after {
-                    transform: scale(1);
-                }
-            }
-        }
-    }
-
-    section[data-slice-type="nav_left"] {
-        justify-content: flex-end;
-    }
-
-    section[data-slice-type="social_menu"] {
-        width: fit-content;
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        gap: 8px;
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        padding: 0px 8px;
-
-        @include mixins.md {
-            display: flex;
-        }
-
-        a {
-            font-size: 16px;
-            color: var(--at-purple);
-            background-color: white;
-            transition: var(--transi);
-            padding: 4px;
-            border: 1px solid #ededed;
-            height: 32px;
-            width: 32px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            &:nth-child(even), &:hover {
-                color: var(--at-peach);
-            }
-
-            &:nth-child(even):hover {
-                color: var(--at-purple);
-            }
-        }
-    }
 }

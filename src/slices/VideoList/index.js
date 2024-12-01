@@ -3,6 +3,7 @@
  * @typedef {import("@prismicio/react").SliceComponentProps<VideoListSlice>} VideoListProps
  * @param {VideoListProps}
  */
+
 import styles from "./page.module.scss"
 import Videolist from "@/app/components/Videolist";
 import Link from "next/link";

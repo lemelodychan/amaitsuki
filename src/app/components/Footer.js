@@ -43,7 +43,7 @@ export default async function Footer() {
                     alt="Amaitsuki Logo"
                     src="/Logo_white.svg"
                     width={70}
-                    height={64}
+                    height={48}
                 />
                 <div className={styles.Credits}>
                     Copyright 2008-2024 Amaitsukiland. All rights reserved. 

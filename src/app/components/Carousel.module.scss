@@ -1,8 +1,15 @@
+@use "../styles/mixins" as mixins;
+@use "../styles/variables" as *;
+
 .Carousel {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 1 / 1;
     border-radius: 16px;
     z-index: 2;
+
+    @include mixins.md {
+        aspect-ratio: 16 / 9;
+    }
 
     img {
         width: 100%;

@@ -12,8 +12,9 @@ import { TbChevronLeft } from "react-icons/tb";
 import { FaXTwitter, FaInstagram, FaTiktok } from "react-icons/fa6";
   
 export async function generateMetadata({ params }) {
+  const { uid } = await params;
   const client = createClient();
-  const page = await client.getByUID("member", params.uid);
+  const page = await client.getByUID("member", uid);
 
   return {
     title: page.data.meta_title,
@@ -31,8 +32,10 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
+  const { uid } = await params;
   const client = createClient();
-  const page = await client.getByUID("member", params.uid, {
+
+  const page = await client.getByUID("member", uid, {
     ref: client.masterRef,
     fetchOptions: {
       cache: 'no-store',
@@ -58,7 +61,7 @@ export default async function Page({ params }) {
       return false;
     }
     return participants.some(
-      (participant) => participant.member?.uid === params.uid
+      (participant) => participant.member?.uid === uid
     );
   });
 
@@ -75,6 +78,7 @@ export default async function Page({ params }) {
             <PrismicNextImage 
               field={page.data.profilepic} 
               className={styles.MemberInfo_Image}
+              fallbackAlt=""
             />
             <div className={styles.MemberInfo_Content}>
                 <div className={styles.taglist}>

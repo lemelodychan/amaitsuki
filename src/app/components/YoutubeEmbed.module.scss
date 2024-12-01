@@ -1,4 +1,6 @@
 @use "../styles/mixins" as mixins;
+@use "../styles/variables" as *;
+
 .Video_Container {
     display: flex;
     flex-direction: column;

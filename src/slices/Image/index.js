@@ -21,6 +21,7 @@ const Image = ({ slice }) => {
         field={slice.primary.image}
         className={styles.ImageSlice}
         style={{ '--width': imageWidth }}
+        fallbackAlt=""
       />
     </>
   );

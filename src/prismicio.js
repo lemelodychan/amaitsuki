@@ -52,10 +52,12 @@ export const createClient = (config = {}) => {
   const client = prismic.createClient(repositoryName, {
     accessToken: process.env.PRISMIC_ACCESS_TOKEN,
     routes,
-    fetchOptions:
-      process.env.NODE_ENV === "production"
-        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
-        : { next: { revalidate: 5 } },
+    fetchOptions: {
+      // Choose the caching strategy based on the environment
+      next: process.env.NODE_ENV === "production"
+        ? { tags: ["prismic"], cache: "force-cache" }
+        : { revalidate: 5 }, // Use short revalidation in development
+    },
     ...config,
   });
 

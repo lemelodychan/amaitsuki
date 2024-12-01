@@ -2,7 +2,7 @@ import { PrismicPreview } from '@prismicio/next';
 import { repositoryName } from '@/prismicio';
 import './globals.css'
 
-import Menu from './components/Menu';
+import Navbar from './components/GlobalNav';
 import Footer from './components/Footer'
 
 export const metadata = {
@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" type="image/svg+xml" href="/assets/Logo.svg" />
+        <link rel="icon" type="image/svg+xml" href="/Logo.svg" />
         <link rel="icon" href="/assets/Logo.png" type="image/x-icon" sizes="16x16"></link>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,701,501,401,400&display=swap" rel="stylesheet" />
       </head>
       <body>
-        <Menu />
+        <Navbar />
         {children}
         <Footer />
       </body>

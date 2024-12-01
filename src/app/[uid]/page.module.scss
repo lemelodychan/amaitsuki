@@ -1,18 +1,17 @@
 @use "../styles/mixins" as mixins;
 
 .main {
-    padding: 2rem 4rem;
-
-    @include mixins.md {
-        padding: 6rem 4rem;
-    }
-    
+    padding: 2rem 2rem 4rem 2rem;
     max-width: 1200px;
     margin: auto;
     position: relative;
     min-height: var(--minheight);
     height: auto!important;
 
+    @include mixins.md {
+        padding: 6rem 4rem;
+    }
+    
     &:after {
         display: block;
         width: 665px;

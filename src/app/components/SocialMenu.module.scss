@@ -1,0 +1,55 @@
+@use "../styles/mixins" as mixins;
+@use "../styles/variables" as *;
+
+.SocialMenu {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    gap: 16px;
+    z-index: 99;
+    
+    position: absolute;
+    bottom: 32px;
+
+    padding: 0px 8px;
+
+    @include mixins.md {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        gap: 8px;
+
+        position: fixed;
+        top: 0px;
+        left: 0px;
+    }
+
+    a {
+        font-size: 16px;
+        color: var(--at-purple);
+        background-color: white;
+        transition: var(--transi);
+        padding: 4px;
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include mixins.md {
+            border: 1px solid #ededed;
+        }
+
+        &:nth-child(even), &:hover {
+            color: var(--at-peach);
+        }
+
+        &:nth-child(even):hover {
+            color: var(--at-purple);
+        }
+    }
+}

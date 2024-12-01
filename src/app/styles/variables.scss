@@ -1,0 +1,40 @@
+$max-width: 1200px;
+$menu-height: 96px;
+$minheight: calc(66vh - $menu-height);
+
+$logo-size-desktop: 64px;
+$logo-size-mobile: 48px;
+$font-text-en: 'Satoshi';
+$font-text-jp: 'Noto Sans JP';
+$font-title-en: 'Quicksand';
+$font-text: $font-text-en, $font-text-jp, Helvetica, Arial, sans-serif;
+$font-title: $font-title-en, $font-text-jp, Helvetica, Arial, sans-serif;
+
+$font-1: 16px/24px $font-text;
+$font-2: 14px/21px $font-text;
+$font-small: 12px/20px $font-text;
+
+$white: #ffffff;
+$midgrey: #999999;
+$light-grey: #f4f4f4;
+$at-purple: #BD96FD;
+$at-purple-rgb: 189, 150, 253;
+$at-peach: #F4C7C2;
+$at-peach-rgb: 244, 199, 194;
+$at-darkgrey: #6B6178;
+
+$gradient-angle: to right;
+$at-gradient: linear-gradient($gradient-angle, $at-purple, $at-peach);
+
+$transi: all 0.3s ease;
+
+$border-radius-s: 4px;
+$border-radius-m: 8px;
+$border-radius-l: 16px;
+
+$spacing-xs: 2px;
+$spacing-s: 4px;
+$spacing-m: 8px;
+$spacing-l: 16px;
+$spacing-xl: 24px;
+$spacing-xxl: 32px;

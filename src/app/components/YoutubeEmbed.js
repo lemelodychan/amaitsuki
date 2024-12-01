@@ -16,6 +16,7 @@ const YoutubeEmbed = ({ videoId, placeholderImage, artistName, songName }) => {
           <div className={styles.Thumbnail} onClick={() => setIsLoaded(true)} style={{ cursor: "pointer" }}>
             {placeholderImage && placeholderImage.url && (
               <PrismicNextImage 
+                fallbackAlt=""
                 field={placeholderImage} 
                 style={{ width: "100%", height: "auto" }}
               />

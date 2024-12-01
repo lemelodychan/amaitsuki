@@ -29,7 +29,9 @@ const Carousel = ({ images }) => {
     >
       {images.map((item, index) => (
         <SwiperSlide key={index} className={styles.Slide}>
-          <PrismicNextImage field={item.image} alt={`Slide ${index + 1}`} />
+          <PrismicNextImage 
+              field={item.image} 
+              fallbackAlt="" />
         </SwiperSlide>
       ))}
     </Swiper>

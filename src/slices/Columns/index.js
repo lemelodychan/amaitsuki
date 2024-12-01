@@ -25,6 +25,7 @@ const Columns = ({ slice }) => {
           <div className={styles.column} key={item.id || index}>
             <PrismicNextImage 
               field={item.image}
+              fallbackAlt=""
             />
             <h3>{item.title}</h3>
             <div className={styles.text}>

@@ -1,0 +1,158 @@
+@use "../styles/mixins" as mixins;
+@use "../styles/variables" as *;
+
+.navigation {
+
+    > div:first-of-type {
+        display: none;
+
+        @include mixins.md {
+            display: flex;
+        }
+    }
+
+    .menu {
+        z-index: 99 !important;
+        position: relative;
+
+        text-align: center;
+        width: -webkit-fill-available;
+        height: var(--menu-height);
+        padding: 8px 1rem;
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        gap: 48px;
+
+        @include mixins.md {
+            position: relative;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .Logo {
+            margin: 16px 0;
+            top: 0;
+            z-index: 999 !important;
+
+            @include mixins.md {
+                display: none;
+            }
+        }
+
+        .navbar {
+            display: none;
+            padding: 8px 16px;
+            gap: 32px;
+
+            @include mixins.md {
+                display: flex;
+            }
+        }
+    
+    }
+    .mobilebutton {
+        background: transparent;
+        color: var(--at-darkgrey);
+        border: 0;
+
+        position: absolute;
+        top: 24px;
+        right: 1rem;
+        z-index: 99;
+        font-size: 20px;
+
+        height: 40px;
+        width: 40px;
+        padding: 0;
+
+        display: inline-flex;
+        align-items: center;
+        justify-items: center;
+        z-index: 999 !important;
+
+        &:hover {
+            border: 0;
+            color: white;
+        }
+
+        @include mixins.md {
+            display: none;
+        }
+    }
+
+
+
+    .mobilemenu {
+        position: fixed;
+        top: 0;
+        z-index: 998 !important;
+        width: 100%;
+        height: 100vh;
+        padding: 24px 32px;
+        color: white;
+        background: 
+            linear-gradient(136deg, rgba(var(--at-purple-rgb),0.7) 0%, rgba(var(--at-peach-rgb),0.7) 100%), 
+            rgba(255,255,255,0.7);
+        backdrop-filter: blur(2px);
+        overflow: hidden;
+
+        .mobilebutton {
+            background: transparent;
+            color: white;
+            border: 0;
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 99;
+            font-size: 24px;
+            z-index: 999 !important;
+        
+            &:hover {
+                border: 0;
+                color: white;
+            }
+        
+            @include mixins.md {
+                display: none;
+            }
+        }
+
+        .navbar {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: max-content max-content max-content;
+            grid-gap: 32px;
+            width: 100%;
+            height: 75vh;
+            justify-content: flex-start;
+            align-items: center;
+            justify-items: center;
+
+            a.Logo {
+                margin-bottom: 16px;
+            }
+
+            > a:nth-of-type(2) {
+                display: none;
+            }
+            > ul {
+                flex-direction: column;
+                gap: 32px;
+
+                > a {
+                    color: white !important;
+                }
+            }
+            > ul:first-of-type {
+                order: 1;
+            }
+            > ul:nth-of-type(2) {
+                order: 2;
+            }
+        }
+    }
+
+}
