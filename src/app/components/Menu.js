@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from './Menu.module.scss';
 
-export default function Menu() {
+export default function Menu({ closeMenu }) {
 
     const pathname = usePathname();
 
@@ -15,6 +15,7 @@ export default function Menu() {
             <ul className={`${styles.menuContent} ${styles.menuLeft}`}>
                 <li>
                     <Link 
+                        onClick={closeMenu}
                         href="/"
                         className={pathname == "/" ? "active" : ""} >
                             Home
@@ -22,6 +23,7 @@ export default function Menu() {
                 </li>
                 <li>
                     <Link 
+                        onClick={closeMenu}
                         href="/about"
                         className={pathname == "/about" ? "active" : ""} >
                             About Us
@@ -29,6 +31,7 @@ export default function Menu() {
                 </li>
                 <li>
                     <Link 
+                        onClick={closeMenu}
                         href="/all-videos"
                         className={pathname == "/all-videos" ? "active" : ""} >
                             Videos
@@ -36,6 +39,7 @@ export default function Menu() {
                 </li>
             </ul>
             <Link 
+                onClick={closeMenu}
                 href="/"
                 className={styles.Logo} >
                 <Image 
@@ -48,6 +52,7 @@ export default function Menu() {
             <ul className={`${styles.menuContent} ${styles.menuRight}`}>
                 <li>
                     <Link 
+                        onClick={closeMenu}
                         href="/members"
                         className={pathname == "/members" ? "active" : ""} >
                             Members
@@ -55,6 +60,7 @@ export default function Menu() {
                 </li>
                 <li>
                     <Link 
+                        onClick={closeMenu}
                         href="/auditions"
                         className={pathname == "/auditions" ? "active" : ""} >
                             Auditions
@@ -62,6 +68,7 @@ export default function Menu() {
                 </li>
                 <li>
                     <Link 
+                        onClick={closeMenu}
                         href="/contact"
                         className={pathname == "/contact" ? "active" : ""} >
                             Contact

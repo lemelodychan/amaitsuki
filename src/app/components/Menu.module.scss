@@ -6,48 +6,72 @@
     display: flex;
     align-items: center;
     gap: 32px;
+    width: 100%;
 
-    a {
-        transition: var(--transi);
-        font-family: var(--font-title);
-        color: white;
-        text-transform: uppercase;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 2.5px;
-        display: inline-block;
-        position: relative;
+    li {
+        width: 100%;
+        text-align: center;
 
         @include mixins.md {
-            color: var(--at-darkgrey);
+            width: fit-content;
         }
 
-        &:after {
+        a {
             transition: var(--transi);
-            display: block;
-            width: 12px;
-            height: 12px;
-            content: " ";
-            background-image: url(../assets/Etoiles.svg);
-            background-size: cover;
-            transform: scale(0);
-            transform-origin: center;
-            position: absolute;
-            top: -16px;
-            left: calc((100% - 12px)/2);
-        }
+            font-family: var(--font-title);
+            color: white;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            display: inline-block;
+            position: relative;
+            padding: 16px 0 8px 0;
+            width: 100%;
 
-        &:hover {
-            color: var(--at-purple);
+            @include mixins.md {
+                width: fit-content;
+                padding: 0;
+                color: var(--at-darkgrey);
+            }
 
             &:after {
-                transform: scale(1);
+                transition: var(--transi);
+                display: block;
+                width: 12px;
+                height: 12px;
+                content: " ";
+                background-image: url(../assets/Etoiles_white.svg);
+                background-size: cover;
+                transform: scale(0);
+                transform-origin: center;
+                position: absolute;
+                top: 0px;
+                left: calc((100% - 12px)/2);
+
+                @include mixins.md {
+                    top: -16px;
+                    background-image: url(../assets/Etoiles.svg);
+                }
+            }
+
+            &:hover {
+                color: var(--at-purple);
+
+                &:after {
+                    transform: scale(1);
+                }
             }
         }
+
+
     }
 
     &.menuLeft {
         justify-content: flex-end;
+    }
+    &.menuRight {
+        justify-content: flex-start;
     }
 }
 

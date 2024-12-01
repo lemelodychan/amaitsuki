@@ -25,6 +25,11 @@ export default function Navbar() {
         };
     }
 
+    function closeMenu() {
+        setShowMe(false);
+        document.querySelector("body").classList.remove("overflowHidden");
+      }
+
     return (
         <div className={styles.navigation}>
             <SocialMenu />
@@ -67,7 +72,7 @@ export default function Navbar() {
                             height={48}
                         />
                     </Link>
-                    <Menu />
+                    <Menu closeMenu={closeMenu} />
                     <SocialMenu />
                 </nav>
             </div>
