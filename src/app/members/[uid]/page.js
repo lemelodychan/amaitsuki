@@ -86,7 +86,9 @@ export default async function Page({ params }) {
                     <div 
                     className={styles.color} 
                     style={{ '--member-color': page.data.color }}>{page.data.color}</div>
-                    <div className={styles.mbti}>{page.data.mbti}</div>
+                    {page.data.mbti && (
+                      <div className={styles.mbti}>{page.data.mbti}</div>
+                    )}
                 </div>
                 {page.data.projects?.some(
                   (item) =>
