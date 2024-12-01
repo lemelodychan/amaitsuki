@@ -58,6 +58,13 @@
                   "select": null,
                   "allowText": true
                 }
+              },
+              "link_icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Link Icon",
+                  "placeholder": ""
+                }
               }
             }
           }

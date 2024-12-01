@@ -1,0 +1,45 @@
+@use "../../app/styles/mixins" as mixins;
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    height: fit-content;
+
+    .button {
+        width: fit-content;
+        background-color: transparent;
+        font: var(--font-small);
+        font-weight: 500;
+        letter-spacing: var(--spacing-xs);
+        text-transform: uppercase;
+        display: flex;
+        gap: var(--spacing-m);
+        padding: var(--spacing-m) calc(var(--spacing-m) + var(--spacing-s));
+        justify-content: center;
+        align-items: center;
+        border-radius: var(--border-radius-m);
+        transition: var(--transi);
+
+        &.primary {
+            color: white;
+            background-image: linear-gradient(136deg, var(--at-purple), var(--at-peach), var(--at-purple));
+            background-size: 200% 100%;
+            background-position: left center;
+
+            &:hover {
+                background-position: right center;
+            }
+        }
+
+        &.secondary {
+            color: var(--at-purple);
+            border: 1px solid var(--at-purple);
+
+            &:hover {
+                color: var(--at-peach);
+                border: 1px solid var(--at-peach);
+                cursor: pointer;
+            }
+        }
+    }
+}

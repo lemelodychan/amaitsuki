@@ -364,6 +364,8 @@ export type MemberDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<MemberDocumentData>, "member", Lang>;
 
 type PageDocumentDataSlicesSlice =
+  | TitleSlice
+  | ButtonSlice
   | AnnouncementSlice
   | AllVideosSlice
   | TextSlice
@@ -690,6 +692,94 @@ export type AnnouncementSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Button → Default → Primary*
+ */
+export interface ButtonSliceDefaultPrimary {
+  /**
+   * Button type field in *Button → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Primary
+   * - **API ID Path**: button.default.primary.button_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  button_type: prismic.SelectField<"Primary" | "Secondary", "filled">;
+
+  /**
+   * Link field in *Button → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Leading icon field in *Button → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button.default.primary.icon
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  icon: prismic.KeyTextField;
+
+  /**
+   * Show trailing icon? field in *Button → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: button.default.primary.show_trailing_icon
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  show_trailing_icon: prismic.BooleanField;
+
+  /**
+   * Align button to... field in *Button → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: center
+   * - **API ID Path**: button.default.primary.alignment
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  alignment: prismic.SelectField<
+    "center" | "flex-start" | "flex-end",
+    "filled"
+  >;
+}
+
+/**
+ * Default variation for Button Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ButtonSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ButtonSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Button*
+ */
+type ButtonSliceVariation = ButtonSliceDefault;
+
+/**
+ * Button Shared Slice
+ *
+ * - **API ID**: `button`
+ * - **Description**: Button
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ButtonSlice = prismic.SharedSlice<"button", ButtonSliceVariation>;
+
+/**
  * Item in *Columns → Default → Primary → Column*
  */
 export interface ColumnsSliceDefaultPrimaryColumnItem {
@@ -732,6 +822,16 @@ export interface ColumnsSliceDefaultPrimaryColumnItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField;
+
+  /**
+   * Link Icon field in *Columns → Default → Primary → Column*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: columns.default.primary.column[].link_icon
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_icon: prismic.KeyTextField;
 }
 
 /**
@@ -1339,6 +1439,32 @@ type TextSliceVariation = TextSliceDefault;
 export type TextSlice = prismic.SharedSlice<"text", TextSliceVariation>;
 
 /**
+ * Primary content in *Title → Default → Primary*
+ */
+export interface TitleSliceDefaultPrimary {
+  /**
+   * Type field in *Title → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: H3
+   * - **API ID Path**: title.default.primary.type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  type: prismic.SelectField<"H3" | "H4" | "H5", "filled">;
+
+  /**
+   * Title field in *Title → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: title.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
  * Default variation for Title Slice
  *
  * - **API ID**: `default`
@@ -1347,7 +1473,7 @@ export type TextSlice = prismic.SharedSlice<"text", TextSliceVariation>;
  */
 export type TitleSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<TitleSliceDefaultPrimary>,
   never
 >;
 
@@ -1484,6 +1610,10 @@ declare module "@prismicio/client" {
       AnnouncementSliceDefaultPrimary,
       AnnouncementSliceVariation,
       AnnouncementSliceDefault,
+      ButtonSlice,
+      ButtonSliceDefaultPrimary,
+      ButtonSliceVariation,
+      ButtonSliceDefault,
       ColumnsSlice,
       ColumnsSliceDefaultPrimaryColumnItem,
       ColumnsSliceDefaultPrimary,
@@ -1527,6 +1657,7 @@ declare module "@prismicio/client" {
       TextSliceVariation,
       TextSliceDefault,
       TitleSlice,
+      TitleSliceDefaultPrimary,
       TitleSliceVariation,
       TitleSliceDefault,
       VideoSlice,

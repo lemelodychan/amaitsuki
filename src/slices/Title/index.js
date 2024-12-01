@@ -4,13 +4,14 @@
  * @param {TitleProps}
  */
 const Title = ({ slice }) => {
+  const TitleTag = slice.primary.type || "h3";
+
   return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      Placeholder component for title (variation: {slice.variation}) Slices
-    </section>
+    <>
+      <TitleTag>
+        {slice.primary.title}
+      </TitleTag>
+    </>
   );
 };
 

@@ -2,7 +2,18 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"type": {
+				"__TYPE__": "FieldContent",
+				"value": "H3",
+				"type": "Select"
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "traffic",
+				"type": "Text"
+			}
+		},
 		"items": []
 	}
 ]

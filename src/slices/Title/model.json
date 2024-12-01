@@ -10,7 +10,30 @@
       "docURL": "...",
       "version": "initial",
       "description": "Default",
-      "imageUrl": ""
+      "imageUrl": "",
+      "primary": {
+        "type": {
+          "type": "Select",
+          "config": {
+            "label": "Type",
+            "placeholder": "",
+            "options": [
+              "H3",
+              "H4",
+              "H5"
+            ],
+            "default_value": "H3"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

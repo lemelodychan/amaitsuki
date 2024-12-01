@@ -67,6 +67,14 @@
 									"__TYPE__": "ImageContent",
 									"thumbnails": {}
 								}
+							],
+							[
+								"link_icon",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "mouth",
+									"type": "Text"
+								}
 							]
 						]
 					}

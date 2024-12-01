@@ -1,0 +1,70 @@
+{
+  "id": "button",
+  "type": "SharedSlice",
+  "name": "Button",
+  "description": "Button",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "button_type": {
+          "type": "Select",
+          "config": {
+            "label": "Button type",
+            "placeholder": "",
+            "options": [
+              "Primary",
+              "Secondary"
+            ],
+            "default_value": "Primary"
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "icon": {
+          "type": "Text",
+          "config": {
+            "label": "Leading icon",
+            "placeholder": ""
+          }
+        },
+        "show_trailing_icon": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show trailing icon?",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          }
+        },
+        "alignment": {
+          "type": "Select",
+          "config": {
+            "label": "Align button to...",
+            "placeholder": "",
+            "options": [
+              "center",
+              "flex-start",
+              "flex-end"
+            ],
+            "default_value": "center"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,73 +1,83 @@
 @use "../../app/styles/mixins" as mixins;
 
-.Columns {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 32px;
-    margin-bottom: 32px;
-    position: relative;
-    z-index: 2;
+.ColumnsContainer {
 
-    @include mixins.md {
-        grid-template-columns: repeat(var(--columns), 1fr);
-        grid-gap: 64px;
-        margin-bottom: 64px;
+    h2:empty, h3:empty {
+        display: none;
     }
 
-    .column{
-        width: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+    .Columns {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 32px;
+        position: relative;
+        z-index: 2;
 
         @include mixins.md {
-            gap: 16px;
+            grid-template-columns: repeat(var(--columns), 1fr);
+            grid-gap: 64px;
         }
 
-        h3 {
-            margin: 0;
-        }
-
-        img {
-            width: 100%;
-            height: auto;
-            border-radius: 16px;
-            margin-bottom: 16px;
-        }
-
-        .text {
-            margin-bottom: 16px;
+        .column{
+            width: auto;
             display: flex;
             flex-direction: column;
-            gap: 16px;
-        }
+            gap: 8px;
 
-        a {
-            display: inline-flex;
-            width: fit-content;
-            gap: var(--spacing-m);
-            padding: var(--spacing-m) calc(var(--spacing-m) + var(--spacing-s));
-            margin-bottom: 24px;
+            @include mixins.md {
+                gap: 16px;
+            }
 
-            justify-content: center;
-            align-items: center;
-            border-radius: var(--border-radius-m);
-            font-family: var(--font-title);
-            
-            background-image: linear-gradient(136deg, #BD96FD -6%, #F4C7C2 53%, #BD96FD 106%);
-            background-size: 200% 100%;
-            background-position: center left;
+            h3 {
+                margin: 0;
+            }
 
-            color: white;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 1px;
-            transition: var(--transi);
+            img {
+                width: 100%;
+                height: auto;
+                border-radius: 16px;
+                margin-bottom: 16px;
+            }
 
-            &:hover {
-                background-position: center right;
+            .text {
+                margin-bottom: 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                &:empty {
+                    display: none;
+                }
+            }
+
+            a {
+                display: inline-flex;
+                width: fit-content;
+                gap: var(--spacing-m);
+                padding: var(--spacing-m) calc(var(--spacing-m) + var(--spacing-s));
+                margin-bottom: 24px;
+
+                justify-content: center;
+                align-items: center;
+                border-radius: var(--border-radius-m);
+                font-family: var(--font-title);
+                
+                background-image: linear-gradient(136deg, #BD96FD -6%, #F4C7C2 53%, #BD96FD 106%);
+                background-size: 200% 100%;
+                background-position: center left;
+
+                color: white;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 14px;
+                letter-spacing: 1px;
+                transition: var(--transi);
+
+                &:hover {
+                    background-position: center right;
+                }
             }
         }
     }
+
 }

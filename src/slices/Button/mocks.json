@@ -1,0 +1,36 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev",
+					"text": "event"
+				}
+			},
+			"icon": {
+				"__TYPE__": "FieldContent",
+				"value": "in",
+				"type": "Text"
+			},
+			"show_trailing_icon": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"button_type": {
+				"__TYPE__": "FieldContent",
+				"value": "Primary",
+				"type": "Select"
+			},
+			"alignment": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Select"
+			}
+		},
+		"items": []
+	}
+]

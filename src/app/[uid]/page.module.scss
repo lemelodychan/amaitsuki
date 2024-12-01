@@ -25,4 +25,14 @@
         z-index: 1;
     }
 
+    .pageContent {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        @include mixins.md {
+            gap: 32px;
+        }
+    }
+
 }
