@@ -276,6 +276,17 @@ interface MemberDocumentData {
   color: prismic.KeyTextField;
 
   /**
+   * MBTI field in *Member*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: member.mbti
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  mbti: prismic.KeyTextField;
+
+  /**
    * Description field in *Member*
    *
    * - **Field Type**: Rich Text

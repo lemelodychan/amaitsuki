@@ -50,6 +50,13 @@
           "placeholder": ""
         }
       },
+      "mbti": {
+        "type": "Text",
+        "config": {
+          "label": "MBTI",
+          "placeholder": ""
+        }
+      },
       "description": {
         "type": "StructuredText",
         "config": {

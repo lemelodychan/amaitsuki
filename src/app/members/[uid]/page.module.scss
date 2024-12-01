@@ -105,6 +105,11 @@
                         background: linear-gradient(143deg, #BD96FD -3.55%, #F4C7C2 103.55%);
                     }
 
+                    &.mbti {
+                        border: 1px solid var(--at-purple);
+                        color: var(--at-purple);
+                    }
+
                     &.color {
                         color: white;
                         border: none;
