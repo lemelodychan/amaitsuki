@@ -120,7 +120,7 @@
                 "placeholder": "",
                 "allowTargetBlank": true,
                 "select": null,
-                "allowText": true
+                "allowText": false
               }
             }
           }
