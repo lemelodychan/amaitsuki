@@ -162,6 +162,16 @@ export interface MemberDocumentDataSnsItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   tiktok: prismic.LinkField;
+
+  /**
+   * Twitch field in *Member → SNS*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: member.sns[].twitch
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  twitch: prismic.LinkField;
 }
 
 /**

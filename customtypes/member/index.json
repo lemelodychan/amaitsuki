@@ -112,6 +112,16 @@
                 "placeholder": "",
                 "select": null
               }
+            },
+            "twitch": {
+              "type": "Link",
+              "config": {
+                "label": "Twitch",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "select": null,
+                "allowText": true
+              }
             }
           }
         }

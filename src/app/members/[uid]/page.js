@@ -12,7 +12,7 @@ import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
 import { TbChevronLeft } from "react-icons/tb";
-import { FaXTwitter, FaInstagram, FaTiktok } from "react-icons/fa6";
+import { FaXTwitter, FaInstagram, FaTiktok, FaTwitch } from "react-icons/fa6";
   
 export async function generateMetadata({ params }) {
   const { uid } = await params;
@@ -87,7 +87,9 @@ export default async function Page({ params }) {
                 <div className={styles.taglist}>
                     <div className={styles.gen}>Generation {page.data.generation}</div>
 
-                    <ColorAccessibility color={page.data.color} />
+                    {page.data.color && (
+                      <ColorAccessibility color={page.data.color} />
+                    )}
 
                     {page.data.mbti && (
                       <div className={styles.mbti}>{page.data.mbti}</div>
@@ -158,6 +160,11 @@ export default async function Page({ params }) {
                       {item.tiktok && item.tiktok.url && (
                         <PrismicNextLink field={item.tiktok} target="_blank">
                           <FaTiktok />
+                        </PrismicNextLink>
+                      )}
+                      {item.twitch && item.twitch.url && (
+                        <PrismicNextLink field={item.twitch} target="_blank">
+                          <FaTwitch />
                         </PrismicNextLink>
                       )}
                     </div>
