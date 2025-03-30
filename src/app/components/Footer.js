@@ -46,7 +46,7 @@ export default async function Footer() {
                     height={48}
                 />
                 <div className={styles.Credits}>
-                    Copyright 2008-2024 Amaitsukiland. All rights reserved. 
+                    Copyright 2008-{new Date().getFullYear()} Amaitsukiland. All rights reserved. 
                     | Official Photo Credit: <a href="https://nathangey.com/" target="_blank">Nathan Gey</a></div>
             </div>
         </footer>
