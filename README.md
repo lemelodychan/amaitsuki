@@ -1,5 +1,20 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Prerequisites
+
+This project requires Node.js 22 or higher. You can check your Node.js version with:
+
+```bash
+node --version
+```
+
+If you need to install Node.js 22, you can use [nvm](https://github.com/nvm-sh/nvm):
+
+```bash
+nvm install 22
+nvm use 22
+```
+
 ## Getting Started
 
 First, run the development server:
