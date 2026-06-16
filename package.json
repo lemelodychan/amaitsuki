@@ -16,21 +16,24 @@
     "@prismicio/client": "^7.12.0",
     "@prismicio/next": "^1.7.1",
     "@prismicio/react": "^2.9.1",
-    "next": "15.0.7",
+    "next": "^15.5.19",
     "polished": "^4.3.1",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.12.0",
-    "swiper": "^11.1.15",
+    "swiper": "^12.2.0",
     "tabler-icons-react": "^1.56.0",
     "wcag-contrast": "^3.0.0"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.58",
     "eslint": "^8",
-    "eslint-config-next": "14.0.4",
+    "eslint-config-next": "^15.5.19",
     "sass": "^1.81.0",
     "sass-loader": "^16.0.3",
     "slice-machine-ui": "^2.10.4"
+  },
+  "overrides": {
+    "postcss": "^8.5.10"
   }
 }
